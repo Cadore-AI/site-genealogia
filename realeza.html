@@ -1217,9 +1217,9 @@
     <div class="family-switcher-nav">
       <button class="family-btn" data-fid="cadore">🇮🇹 Família Cadore</button>
       <button class="family-btn" data-fid="dequigiovanni">🇮🇹 Família Dequigiovanni</button>
-      <button class="family-btn active" data-fid="schubert">🇵🇱 Família Szubert / Schubert</button>
+      <button class="family-btn" data-fid="schubert">🇵🇱 Família Szubert / Schubert</button>
       <button class="family-btn" data-fid="liczbinski">🇵🇱 Família Liczbinski</button>
-      <button class="family-btn" data-fid="realeza">👑 Linhagem Real (Rimeni & Filhos)</button>
+      <button class="family-btn active" data-fid="realeza">👑 Linhagem Real (Rimeni & Filhos)</button>
     </div>
   </div>
 </div>
@@ -1235,7 +1235,7 @@
 
 
     <!-- SELETOR DAS QUATRO LINHAGENS REAIS -->
-    <div class="royal-lines-box" id="royal-lines-box" style="display:none; max-width:1300px; margin:20px auto 25px auto;">
+    <div class="royal-lines-box" id="royal-lines-box" style="display:block; max-width:1300px; margin:20px auto 25px auto;">
       <div class="royal-lines-header">
         <div class="royal-crown-badge">👑</div>
         <div>
@@ -12696,7 +12696,7 @@ const FAMILIES_DATABASE = {
 // MOTOR DE RENDERIZAÇÃO & INTERATIVIDADE
 // =============================================================================
 
-let currentFamilyKey = 'schubert';
+let currentFamilyKey = 'realeza';
 
 function selectFamily(key) {
   if (!FAMILIES_DATABASE[key]) key = 'schubert';
@@ -13216,12 +13216,7 @@ window.addEventListener('resize', () => {
   }
 });
 
-const initialHash = (location.hash || '').replace('#', '').toLowerCase();
-if (FAMILIES_DATABASE[initialHash]) {
-  selectFamily(initialHash);
-} else {
-  selectFamily('schubert');
-}
+selectFamily('realeza');
 </script>
 
 </body>
