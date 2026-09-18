@@ -1,0 +1,2784 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Memorial Genealógico Familiar — Cadore • Dequigiovanni • Szubert • Liczbinski</title>
+<style>
+  :root {
+    --bg: #faf6f0;
+    --bg-card: #ffffff;
+    --bg-soft: #f3ece0;
+    --ink: #2d1f0e;
+    --ink-soft: #5a4a36;
+    --ink-faint: #8a7a64;
+    --accent: #8b0000;
+    --accent-soft: #b04040;
+    --accent-gradient: linear-gradient(135deg, #5c0000 0%, #8b0000 50%, #4a0000 100%);
+    --gold: #a07820;
+    --document: #fffaf0;
+    --border: #d9cdb8;
+    --tree-line: #b09870;
+    --badge-bg: rgba(220, 20, 60, 0.15);
+    --badge-border: rgba(220, 20, 60, 0.4);
+    --badge-text: #8b0000;
+    --shadow: 0 2px 8px rgba(45, 31, 14, 0.08);
+    --shadow-hover: 0 4px 16px rgba(45, 31, 14, 0.15);
+    --serif: Georgia, "Times New Roman", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  /* Tema Italiano (Cadore & Dequigiovanni) */
+  body[data-origin="IT"] {
+    --accent: #1e5631;
+    --accent-soft: #2e7d32;
+    --accent-gradient: linear-gradient(135deg, #133820 0%, #1e5631 50%, #0d2615 100%);
+    --gold: #b8860b;
+    --badge-bg: rgba(30, 86, 49, 0.15);
+    --badge-border: rgba(30, 86, 49, 0.4);
+    --badge-text: #1e5631;
+  }
+
+  /* Tema Polonês (Szubert & Liczbinski) */
+  body[data-origin="PL"] {
+    --accent: #8b0000;
+    --accent-soft: #b04040;
+    --accent-gradient: linear-gradient(135deg, #5c0000 0%, #8b0000 50%, #4a0000 100%);
+    --gold: #a07820;
+    --badge-bg: rgba(220, 20, 60, 0.15);
+    --badge-border: rgba(220, 20, 60, 0.4);
+    --badge-text: #8b0000;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+
+  /* Top Bar de Seleção da Família */
+  .family-switcher-bar {
+    background: #1c140e;
+    color: white;
+    padding: 0.75rem 1rem;
+    border-bottom: 2px solid var(--gold);
+  }
+  .family-switcher-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+  .family-switcher-label {
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #e2d9cc;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .family-switcher-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .family-btn {
+    padding: 0.45rem 1rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e2d9cc;
+    border-radius: 20px;
+    font-size: 0.86rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .family-btn:hover {
+    background: rgba(255, 255, 255, 0.18);
+    color: white;
+    transform: translateY(-1px);
+  }
+  .family-btn.active {
+    background: var(--gold);
+    color: #1c140e;
+    border-color: var(--gold);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+
+  /* Header Principal */
+  header.site {
+    background: var(--accent-gradient);
+    color: white;
+    padding: 2.5rem 2rem 2rem;
+    text-align: center;
+    border-bottom: 4px solid var(--gold);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    transition: background 0.4s ease;
+  }
+  header.site .badge-origin {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: #fff;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.8rem;
+  }
+  header.site h1 {
+    font-family: var(--serif);
+    font-size: 2.6rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+  header.site .subtitle {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.15rem;
+    opacity: 0.95;
+    margin-bottom: 0.5rem;
+    max-width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  header.site .lineage {
+    display: inline-block;
+    background: rgba(0,0,0,0.25);
+    padding: 0.45rem 1rem;
+    border-radius: 6px;
+    font-size: 0.88rem;
+    opacity: 0.92;
+    margin-top: 0.6rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  /* Abas de Navegação */
+  nav.tabs {
+    position: sticky;
+    top: 0;
+    background: var(--ink);
+    color: white;
+    z-index: 100;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+  }
+  nav.tabs ul {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    list-style: none;
+    justify-content: center;
+  }
+  nav.tabs li button {
+    padding: 1rem 1.4rem;
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-family: var(--sans);
+    font-weight: 500;
+    transition: all 0.2s;
+    border-bottom: 3px solid transparent;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  nav.tabs li button:hover { background: rgba(255,255,255,0.1); }
+  nav.tabs li button.active {
+    border-bottom-color: var(--gold);
+    background: rgba(255,255,255,0.08);
+    font-weight: 600;
+  }
+
+  /* Conteúdo Principal */
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+  section.view {
+    display: none;
+    animation: fadeIn 0.3s ease;
+  }
+  section.view.active { display: block; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: 2rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  h3 {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    color: var(--ink);
+    margin: 1.8rem 0 0.8rem;
+  }
+  h4 {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    color: var(--accent);
+    margin: 1.2rem 0 0.5rem;
+  }
+  p { margin-bottom: 0.9rem; }
+
+  /* Hero banner e Imagem */
+  .hero-banner {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 2rem;
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    margin-bottom: 2.5rem;
+    border-left: 5px solid var(--accent);
+    align-items: center;
+  }
+  @media (max-width: 850px) {
+    .hero-banner { grid-template-columns: 1fr; }
+  }
+  .hero-banner .hero-img-wrap {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    cursor: zoom-in;
+    background: #201711;
+  }
+  .hero-banner .hero-img-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+  .hero-banner .hero-img-wrap:hover img {
+    transform: scale(1.02);
+  }
+  .hero-banner .hero-caption {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    font-style: italic;
+    padding: 0.6rem 0.8rem;
+    background: var(--document);
+    border-top: 1px solid var(--border);
+  }
+
+  /* Estatísticas */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.2rem;
+    margin: 2rem 0;
+  }
+  .stat-card {
+    background: var(--bg-card);
+    padding: 1.5rem 1.2rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent);
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: transform 0.2s;
+  }
+  .stat-card:hover { transform: translateY(-3px); }
+  .stat-card .number {
+    font-family: var(--serif);
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: var(--accent);
+    line-height: 1.1;
+    margin-bottom: 0.3rem;
+  }
+  .stat-card .label {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Cartões de Narrativa */
+  .story-card {
+    background: var(--bg-card);
+    padding: 1.8rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    margin-bottom: 1.8rem;
+    border-left: 4px solid var(--gold);
+  }
+  .story-card.featured {
+    border-left-color: var(--accent);
+    background: linear-gradient(to right, #fffdfa 0%, #ffffff 100%);
+  }
+
+  /* Tabela de Variações */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.2rem 0 2rem;
+    background: var(--bg-card);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .data-table th, .data-table td {
+    padding: 0.8rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .data-table th {
+    background: var(--bg-soft);
+    color: var(--accent);
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    font-weight: bold;
+  }
+  .data-table tr:hover td { background: var(--document); }
+
+  /* Árvore Genealógica */
+  .tree-view-toggle {
+    display: flex;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+  }
+  .tree-view-toggle button {
+    padding: 0.6rem 1.2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+  .tree-view-toggle button.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+
+  .pedigree-container {
+    overflow-x: auto;
+    background: var(--bg-card);
+    padding: 2.5rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    margin-bottom: 2rem;
+  }
+  .pedigree-inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2.2rem;
+    min-width: 960px;
+    align-items: center;
+  }
+  svg.tree-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .pedigree-level {
+    display: flex;
+    justify-content: center;
+    gap: 1.8rem;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+  }
+  .pedigree-level-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--gold);
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 0.4rem;
+  }
+
+  .node {
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    width: 195px;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    position: relative;
+  }
+  .node:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--accent);
+  }
+  .node.direct {
+    border-color: var(--accent);
+    border-width: 3px;
+    background: #fffafa;
+  }
+  .node.foreign-born {
+    border-color: var(--accent);
+    border-width: 3px;
+  }
+  .node.foreign-born::before {
+    content: attr(data-flag);
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+    font-size: 0.85rem;
+  }
+  .node.root-target {
+    border-color: var(--gold);
+    background: #fdfbf7;
+    border-width: 3px;
+  }
+  .node .node-name {
+    font-family: var(--serif);
+    font-weight: bold;
+    color: var(--accent);
+    font-size: 0.92rem;
+    line-height: 1.25;
+    margin-bottom: 0.25rem;
+  }
+  .node .node-dates {
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+  }
+  .node .node-place {
+    font-size: 0.7rem;
+    color: var(--ink-faint);
+    font-style: italic;
+    margin-top: 0.2rem;
+  }
+
+  /* Visão em Linhas */
+  .gens-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .gens-rows .gen-block {
+    background: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--gold);
+  }
+  .gens-rows .gen-block h4 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+  .gens-rows .gen-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /* Pessoas */
+  .filter-bar {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.8rem;
+    flex-wrap: wrap;
+  }
+  .filter-btn {
+    padding: 0.5rem 1.1rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+  .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .filter-btn.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+  .people-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.2rem;
+  }
+  .person-card {
+    background: var(--bg-card);
+    border-radius: 8px;
+    padding: 1.4rem;
+    box-shadow: var(--shadow);
+    border-top: 4px solid var(--border);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .person-card.direct { border-top-color: var(--accent); }
+  .person-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+  }
+  .person-card .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.4rem;
+  }
+  .person-card .name {
+    font-family: var(--serif);
+    font-size: 1.22rem;
+    font-weight: bold;
+    color: var(--accent);
+    line-height: 1.2;
+  }
+  .person-card .relation {
+    font-size: 0.84rem;
+    color: var(--ink-faint);
+    font-style: italic;
+    margin-bottom: 0.8rem;
+  }
+  .person-card .facts { list-style: none; margin: 0.6rem 0; }
+  .person-card .facts li {
+    font-size: 0.88rem;
+    padding: 0.25rem 0;
+    color: var(--ink);
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+  }
+  .person-card .facts .icon {
+    color: var(--gold);
+    min-width: 18px;
+    font-size: 0.95rem;
+  }
+  .person-card .notes {
+    margin-top: 0.8rem;
+    padding-top: 0.8rem;
+    border-top: 1px dashed var(--border);
+    font-size: 0.84rem;
+    color: var(--ink-soft);
+    font-style: italic;
+    line-height: 1.45;
+  }
+
+  /* Documentos */
+  .documents-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .doc-card {
+    background: var(--bg-card);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    border-left: 5px solid var(--gold);
+  }
+  .doc-header {
+    padding: 1.1rem 1.4rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s;
+  }
+  .doc-header:hover { background: var(--bg-soft); }
+  .doc-header .doc-info { flex: 1; }
+  .doc-header .doc-type {
+    font-size: 0.72rem;
+    background: var(--accent);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+  }
+  .doc-header .doc-title {
+    font-family: var(--serif);
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+  }
+  .doc-header .doc-meta {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+  .doc-toggle {
+    font-size: 1.6rem;
+    color: var(--accent);
+    transition: transform 0.2s;
+    user-select: none;
+    padding-left: 1rem;
+  }
+  .doc-card.expanded .doc-toggle { transform: rotate(180deg); }
+  .doc-body {
+    display: none;
+    padding: 0 1.4rem 1.4rem;
+    border-top: 1px solid var(--border);
+  }
+  .doc-card.expanded .doc-body { display: block; }
+  .doc-body h5 {
+    font-family: var(--serif);
+    color: var(--gold);
+    margin: 1.2rem 0 0.5rem;
+    font-size: 0.88rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+  }
+  .doc-body .doc-image-wrap {
+    background: #201711;
+    padding: 0.75rem;
+    border-radius: 6px;
+    text-align: center;
+    margin-top: 0.6rem;
+    border: 1px solid var(--border);
+  }
+  .doc-body .doc-image-wrap img {
+    max-width: 100%;
+    max-height: 500px;
+    height: auto;
+    cursor: zoom-in;
+    border-radius: 3px;
+  }
+  .doc-body .doc-image-caption {
+    font-size: 0.8rem;
+    color: #e2d9cc;
+    margin-top: 0.5rem;
+    font-style: italic;
+  }
+  .doc-body .transcription {
+    background: var(--document);
+    padding: 1.1rem 1.3rem;
+    border-radius: 5px;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 0.92rem;
+    line-height: 1.75;
+    border-left: 3px solid var(--gold);
+    color: var(--ink);
+    white-space: pre-wrap;
+  }
+  .doc-body .key-facts {
+    list-style: none;
+    margin-top: 0.5rem;
+  }
+  .doc-body .key-facts li {
+    padding: 0.35rem 0;
+    font-size: 0.9rem;
+    border-bottom: 1px dotted var(--border);
+  }
+  .doc-body .key-facts li:last-child { border-bottom: none; }
+  .doc-body .key-facts strong { color: var(--accent); }
+
+  /* Linha do Tempo */
+  .timeline-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    align-items: center;
+  }
+  .timeline-controls .filter-btn { font-size: 0.85rem; padding: 0.45rem 0.9rem; }
+  .timeline-jump {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.8rem;
+    padding: 0.8rem 1rem;
+    background: var(--bg-card);
+    border-radius: 6px;
+    box-shadow: var(--shadow);
+    align-items: center;
+  }
+  .timeline-jump span {
+    font-size: 0.82rem;
+    color: var(--ink-faint);
+    margin-right: 0.4rem;
+    font-weight: 500;
+  }
+  .timeline-jump a {
+    background: var(--gold);
+    color: white;
+    padding: 0.25rem 0.65rem;
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+  .timeline-jump a:hover { background: var(--accent); }
+
+  .decade-block {
+    margin-bottom: 2.2rem;
+  }
+  .decade-header {
+    background: linear-gradient(90deg, var(--accent) 0%, var(--accent-soft) 100%);
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border-radius: 6px 6px 0 0;
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .decade-header .count {
+    font-size: 0.85rem;
+    font-family: var(--sans);
+    opacity: 0.9;
+    background: rgba(255,255,255,0.2);
+    padding: 2px 8px;
+    border-radius: 12px;
+  }
+  .decade-events {
+    background: var(--bg-card);
+    border-radius: 0 0 6px 6px;
+    box-shadow: var(--shadow);
+    padding: 1rem 1.4rem;
+    border: 1px solid var(--border);
+    border-top: none;
+  }
+  .timeline-event {
+    display: flex;
+    gap: 1.2rem;
+    padding: 1rem 0;
+    border-bottom: 1px dotted var(--border);
+    align-items: flex-start;
+  }
+  .timeline-event:last-child { border-bottom: none; }
+  .timeline-event.hidden { display: none; }
+  .timeline-event .event-icon {
+    font-size: 1.4rem;
+    min-width: 34px;
+    height: 34px;
+    background: var(--bg-soft);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .timeline-event .event-body { flex: 1; }
+  .timeline-event .event-year {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: bold;
+    color: var(--accent);
+  }
+  .timeline-event .event-date {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    margin-left: 0.4rem;
+  }
+  .timeline-event .event-desc {
+    margin-top: 0.3rem;
+    font-size: 0.95rem;
+    color: var(--ink);
+  }
+  .timeline-event .event-loc {
+    margin-top: 0.25rem;
+    font-size: 0.82rem;
+    color: var(--ink-faint);
+    font-style: italic;
+  }
+
+  /* Modal e Lightbox */
+  .modal-backdrop, .lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(20, 10, 5, 0.75);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+  }
+  .modal-backdrop.active, .lightbox.active { display: flex; }
+  .modal-content {
+    background: var(--bg-card);
+    border-radius: 10px;
+    max-width: 650px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    position: relative;
+    border-top: 5px solid var(--accent);
+  }
+  .modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.2rem;
+    background: transparent;
+    border: none;
+    font-size: 1.8rem;
+    color: var(--ink-faint);
+    cursor: pointer;
+    line-height: 1;
+  }
+  .modal-close:hover { color: var(--accent); }
+  .lightbox img {
+    max-width: 95vw;
+    max-height: 92vh;
+    border-radius: 4px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+    border: 2px solid var(--border);
+  }
+
+  /* Rodapé */
+  footer.site {
+    background: var(--ink);
+    color: #e2d9cc;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 3px solid var(--gold);
+    margin-top: 3rem;
+  }
+</style>
+</head>
+<body data-origin="PL">
+
+<!-- Barra Superior com Seletor das 4 Famílias -->
+<div class="family-switcher-bar">
+  <div class="family-switcher-inner">
+    <div class="family-switcher-label">
+      <span>🌳 Linhagens Ancestrais dos 4 Avós:</span>
+    </div>
+    <div class="family-switcher-nav">
+      <button class="family-btn" data-fid="cadore">🇮🇹 Família Cadore</button>
+      <button class="family-btn" data-fid="dequigiovanni">🇮🇹 Família Dequigiovanni</button>
+      <button class="family-btn active" data-fid="schubert">🇵🇱 Família Szubert / Schubert</button>
+      <button class="family-btn" data-fid="liczbinski">🇵🇱 Família Liczbinski</button>
+    </div>
+  </div>
+</div>
+
+<header class="site">
+  <div class="badge-origin" id="header-badge">🇵🇱 Ramo Polonês da Família</div>
+  <h1 id="header-title">Família Szubert / Schubert</h1>
+  <div class="subtitle" id="header-subtitle">Memória, História e Genealogia da Linhagem Materna de Marlene Schubert Cadore</div>
+  <div class="lineage" id="header-lineage">
+    Martin Schubert (~1850) ➔ Stanisław Schubert (1880) ➔ Felicio Schubert (1904) ➔ Ambrosio Schubert (1935) ➔ Marlene Schubert ➔ Diego Cadore
+  </div>
+</header>
+
+<nav class="tabs">
+  <ul>
+    <li><button class="tab-btn active" data-tab="home">🏛 Início</button></li>
+    <li><button class="tab-btn" data-tab="tree">🌳 Árvore Genealógica</button></li>
+    <li><button class="tab-btn" data-tab="people">👥 Pessoas</button></li>
+    <li><button class="tab-btn" data-tab="documents">📜 Documentos & Certidões</button></li>
+    <li><button class="tab-btn" data-tab="timeline">⏳ Linha do Tempo</button></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- =========================================================================
+       TAB 1: INÍCIO (Visão Geral da Família Selecionada)
+       ========================================================================= -->
+  <section id="home" class="view active">
+    <h2>🏛 História & Memória Familiar</h2>
+
+    <div class="hero-banner" id="hero-banner-container"></div>
+
+    <div class="stats" id="stats-container"></div>
+
+    <div id="family-stories-container"></div>
+
+    <h3>Variação de Grafias Documentais ao Longo das Gerações</h3>
+    <p>Com a imigração e as anotações cartorárias brasileiras, sobrenomes e prenomes assumiram grafias locais:</p>
+    <div id="variations-table-container"></div>
+  </section>
+
+  <!-- =========================================================================
+       TAB 2: ÁRVORE GENEALÓGICA
+       ========================================================================= -->
+  <section id="tree" class="view">
+    <h2>🌳 Árvore Genealógica da Linhagem</h2>
+
+    <div class="tree-view-toggle">
+      <button class="active" data-view="pedigree">Visão Pedigree Interativa</button>
+      <button data-view="rows">Visão em Linhas (Gerações)</button>
+    </div>
+
+    <div id="tree-pedigree" class="pedigree-container">
+      <div class="pedigree-inner" id="pedigree-inner-container"></div>
+    </div>
+
+    <div id="tree-rows" style="display: none;"></div>
+  </section>
+
+  <!-- =========================================================================
+       TAB 3: PESSOAS
+       ========================================================================= -->
+  <section id="people" class="view">
+    <h2>👥 Antepassados & Familiares Mapeados</h2>
+
+    <div class="filter-bar" id="people-filter-bar">
+      <button class="filter-btn active" data-filter="all">Todos</button>
+      <button class="filter-btn" data-filter="direct">Linhagem Direta</button>
+      <button class="filter-btn" data-filter="europe-born">Nascidos na Europa</button>
+      <button class="filter-btn" data-filter="brazil-born">Nascidos no Brasil 🇧🇷</button>
+      <button class="filter-btn" data-filter="siblings">Irmãos & Colaterais</button>
+    </div>
+
+    <div class="people-grid" id="people-grid"></div>
+  </section>
+
+  <!-- =========================================================================
+       TAB 4: DOCUMENTOS & CERTIDÕES
+       ========================================================================= -->
+  <section id="documents" class="view">
+    <h2>📜 Registros Históricos & Fontes Primárias</h2>
+    <p>Acervo de certidões paroquiais originais, registros civis, passaportes e referências de imprensa histórica:</p>
+
+    <div class="documents-list" id="documents-list"></div>
+  </section>
+
+  <!-- =========================================================================
+       TAB 5: LINHA DO TEMPO
+       ========================================================================= -->
+  <section id="timeline" class="view">
+    <h2>⏳ Linha do Tempo Cronológica</h2>
+
+    <div class="timeline-controls">
+      <button class="filter-btn active" data-tlfilter="all">Todos os Eventos</button>
+      <button class="filter-btn" data-tlfilter="birth">👶 Nascimentos</button>
+      <button class="filter-btn" data-tlfilter="marriage">💍 Casamentos</button>
+      <button class="filter-btn" data-tlfilter="death">✝ Falecimentos</button>
+      <button class="filter-btn" data-tlfilter="milestone">★ Marcos Históricos</button>
+    </div>
+
+    <div class="timeline-jump" id="timeline-jump"></div>
+    <div id="timeline-decades"></div>
+  </section>
+
+</main>
+
+<!-- Modal de Detalhes da Pessoa -->
+<div class="modal-backdrop" id="modal-backdrop" onclick="closeModal()">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <h3 id="modal-title" style="margin-top: 0; color: var(--accent);"></h3>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<!-- Lightbox de Imagem -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="" alt="Ampliação do Documento">
+</div>
+
+<footer class="site">
+  <p><strong>Memorial Genealógico Familiar</strong> — Diego Cadore</p>
+  <p style="margin-top: 0.4rem; font-size: 0.85rem; opacity: 0.8;">Cadore • Dequigiovanni • Szubert / Schubert • Liczbinski</p>
+</footer>
+
+<script>
+// =============================================================================
+// BASE DE DADOS COMPLETA DAS 4 FAMÍLIAS
+// =============================================================================
+
+const FAMILIES_DATABASE = {
+
+  // ---------------------------------------------------------------------------
+  // 1. FAMÍLIA CADORE (Linhagem Paterna Italiana)
+  // ---------------------------------------------------------------------------
+  cadore: {
+    id: "cadore",
+    name: "Família Cadore",
+    originCode: "IT",
+    originLabel: "🇮🇹 Ramo Paterno Italiano — Vêneto / Belluno",
+    subtitle: "História, Documentos e Genealogia da Linhagem Patrilinear de Edison Luis Cadore",
+    lineageText: "Giovanni Battista Cadore (1809) ➔ Giovanni Battista Cadore (1853) ➔ Luigi Cadore (1887) ➔ Luiz Domingos Cadore (1935) ➔ Edison Luis Cadore (1958) ➔ Diego Cadore",
+    hero: {
+      title: "Dos Vales Dolomíticos do Belluno à Serra e Planalto Gaúcho",
+      text: `<p>O sobrenome <strong>Cadore</strong> possui raízes toponímicas ancestrais ligadas à histórica região montanhosa de <strong>Cadore</strong>, na província de Belluno, região do Vêneto, norte da Itália.</p>
+             <p>A linhagem documental inicia-se com <strong>Giovanni Battista Cadore (nascido em 1809)</strong> e sua esposa Antonia Bonato. Seu filho homônimo, <strong>Giovanni Battista Cadore (1853–1938)</strong>, casou-se com Anna Maria Schirato e integrou a grande corrente de emigração italiana do final do século XIX para o Rio Grande do Sul.</p>
+             <p>No Brasil, seu filho <strong>Luigi Cadore (1887–1966)</strong> desbravou as colônias agrícolas e casou-se com Emilia Dequigiovanni, dando continuidade à linhagem através de <strong>Luiz Domingos Cadore (1935–2010)</strong>, pai de <strong>Edison Luis Cadore (1958–2026)</strong>.</p>`,
+      image: "images/trajetoria_cadore_esquema.png",
+      caption: "Esquema da trajetória migratória e territorial da Família Cadore (Itália ➔ Rio Grande do Sul)."
+    },
+    stats: [
+      { number: "6", label: "Gerações Mapeadas" },
+      { number: "1809", label: "Registro Mais Antigo" },
+      { number: "1883", label: "Imigração para o RS" },
+      { number: "Vêneto", label: "Berço Ancestral" }
+    ],
+    stories: [
+      {
+        title: "🇮🇹 As Raízes na Província de Belluno",
+        text: "<p>A família Cadore provém da região alpina de Belluno no Vêneto. Registros civis e paroquiais atestam a vida camponesa e artesanal da família em solo italiano durante as conturbações do Reino Lombardo-Vêneto e a Unificação da Itália (Risorgimento).</p>",
+        featured: true
+      },
+      {
+        title: "🇧🇷 O Assentamento Colonial no Rio Grande do Sul",
+        text: "<p>Ao chegarem ao Rio Grande do Sul na década de 1880, os imigrantes Cadore receberam lotes coloniais registrados pelo governo provincial, dedicando-se à agricultura, pecuária e consolidação das comunidades do interior gaúcho.</p>",
+        featured: false
+      }
+    ],
+    variations: [
+      { original: "Cadore", registered: "Cadore, Cadori", context: "Patrilinear direta mantida intacta ao longo dos séculos" },
+      { original: "Giovanni Battista", registered: "João Batista, Giovani Batista", context: "Patriarca imigrante (1853–1938)" },
+      { original: "Luigi", registered: "Luiz, Luis Cadore", context: "Bisavô (1887–1966)" }
+    ],
+    treePedigree: [
+      { level: "Geração 5 — Itália", nodes: [
+        { id: "cadore-gb-1809", name: "Giovanni Battista Cadore", dates: "1809 — † 1897", place: "Belluno, Itália 🇮🇹", foreign: true, flag: "🇮🇹" },
+        { id: "bonato-antonia", name: "Antonia Bonato", dates: "1818 — † 1893", place: "Itália 🇮🇹", foreign: true, flag: "🇮🇹" }
+      ]},
+      { level: "Geração 4 — O Imigrante", nodes: [
+        { id: "cadore-gb-1853", name: "Giovanni Battista Cadore", dates: "1853 — † 1938", place: "Itália 🇮🇹 ➔ RS 🇧🇷", direct: true, foreign: true, flag: "🇮🇹" },
+        { id: "schirato-anna", name: "Anna Maria Schirato", dates: "1860 — † 1940", place: "Itália 🇮🇹 ➔ RS 🇧🇷", foreign: true, flag: "🇮🇹" }
+      ]},
+      { level: "Geração 3 — Bisavôs", nodes: [
+        { id: "cadore-luigi", name: "Luigi Cadore", dates: "1887 — † 1966", place: "Rio Grande do Sul 🇧🇷", direct: true },
+        { id: "dequigiovanni-emilia-tree", name: "Emilia Dequigiovanni", dates: "1889 — † 1960", place: "Rio Grande do Sul 🇧🇷" }
+      ]},
+      { level: "Geração 2 — Avô Paterno", nodes: [
+        { id: "cadore-luiz-domingos", name: "Luiz Domingos Cadore", dates: "1935 — † 2010", place: "Rio Grande do Sul 🇧🇷", direct: true },
+        { id: "cadore-araci", name: "Araci Cadore (Bueno)", dates: "1939 — ?", place: "Rio Grande do Sul 🇧🇷" }
+      ]},
+      { level: "Geração 1 — Pai", nodes: [
+        { id: "cadore-edison", name: "Edison Luis Cadore", dates: "1958 — 2026", place: "Rio Grande do Sul 🇧🇷", direct: true }
+      ]},
+      { level: "Geração 0 — Requerente", nodes: [
+        { id: "cadore-diego", name: "Diego Cadore & Irmãos", dates: "1986 — Presente", place: "Brasil 🇧🇷", direct: true, root: true }
+      ]}
+    ],
+    connections: [
+      { child: "cadore-gb-1853", parents: ["cadore-gb-1809", "bonato-antonia"] },
+      { child: "cadore-luigi", parents: ["cadore-gb-1853", "schirato-anna"] },
+      { child: "cadore-luiz-domingos", parents: ["cadore-luigi", "dequigiovanni-emilia-tree"] },
+      { child: "cadore-edison", parents: ["cadore-luiz-domingos", "cadore-araci"] },
+      { child: "cadore-diego", parents: ["cadore-edison"] }
+    ],
+    treeRows: [
+      { label: "Geração 5 — Itália (Belluno / Vêneto)", people: ["cadore-gb-1809", "bonato-antonia"] },
+      { label: "Geração 4 — Os Imigrantes Italianos", people: ["cadore-gb-1853", "schirato-anna"] },
+      { label: "Geração 3 — Nascidos no Brasil (Colônias do RS)", people: ["cadore-luigi", "dequigiovanni-emilia-tree"] },
+      { label: "Geração 2 — Avós Paternos", people: ["cadore-luiz-domingos", "cadore-araci"] },
+      { label: "Geração 1 — Pai", people: ["cadore-edison"] },
+      { label: "Geração 0 — Filho", people: ["cadore-diego"] }
+    ],
+    people: {
+      "cadore-diego": {
+        name: "Diego Cadore",
+        relation: "Filho de Edison Luis Cadore e Marlene Schubert Cadore",
+        direct: true,
+        foreignBorn: false,
+        brazilBorn: true,
+        category: "direct",
+        flag: "🇧🇷",
+        facts: [
+          { icon: "👶", text: "Nascido em 1986 no Brasil" },
+          { icon: "👨‍👩‍👦", text: "Filho de Edison Luis Cadore e Marlene Schubert Cadore" }
+        ],
+        notes: "Pesquisador responsável pelo mapeamento das 4 linhagens ancestrais."
+      },
+      "cadore-edison": {
+        name: "Edison Luis Cadore",
+        relation: "Pai • Filho de Luiz Domingos Cadore e Araci",
+        direct: true,
+        foreignBorn: false,
+        brazilBorn: true,
+        category: "direct",
+        flag: "🇧🇷",
+        facts: [
+          { icon: "👶", text: "Nascido em 1958 no Rio Grande do Sul [G56H-KY2]" },
+          { icon: "💍", text: "Casado com Marlene Schubert Cadore" },
+          { icon: "✝", text: "Falecido em 2026" }
+        ],
+        notes: "Linhagem patrilinear direta da família Cadore."
+      },
+      "cadore-luiz-domingos": {
+        name: "Luiz Domingos Cadore",
+        relation: "Avô Paterno • Filho de Luigi Cadore e Emilia Dequigiovanni",
+        direct: true,
+        foreignBorn: false,
+        brazilBorn: true,
+        category: "direct",
+        flag: "🇧🇷",
+        facts: [
+          { icon: "👶", text: "Nascido em 1935 no Rio Grande do Sul [G56C-RPX]" },
+          { icon: "✝", text: "Falecido em 2010" }
+        ],
+        notes: "União dos ramos italianos Cadore e Dequigiovanni."
+      },
+      "cadore-araci": {
+        name: "Araci Cadore (Bueno dos Santos)",
+        relation: "Avó Paterna • Esposa de Luiz Domingos Cadore",
+        direct: false,
+        foreignBorn: false,
+        brazilBorn: true,
+        category: "direct",
+        flag: "🇧🇷",
+        facts: [
+          { icon: "👶", text: "Nascida em 1939 [G56C-KQJ]" },
+          { icon: "👨‍👩‍👧", text: "Filha de Julio Bueno dos Santos e Jacinta Aquila Godoi" }
+        ],
+        notes: "Linhagem materna paterna com raízes tradicionais gaúchas."
+      },
+      "cadore-luigi": {
+        name: "Luigi Cadore (Luiz Cadore)",
+        relation: "Bisavô • Filho de Giovanni Battista Cadore e Anna Maria Schirato",
+        direct: true,
+        foreignBorn: false,
+        brazilBorn: true,
+        category: "direct",
+        flag: "🇧🇷",
+        facts: [
+          { icon: "👶", text: "Nascido em 1887 no Rio Grande do Sul [GJQ8-1CT]" },
+          { icon: "💍", text: "Casado com Emilia Dequigiovanni" },
+          { icon: "✝", text: "Falecido em 1966" }
+        ],
+        notes: "Primeira geração Cadore nascida no Brasil."
+      },
+      "dequigiovanni-emilia-tree": {
+        name: "Emilia Dequigiovanni Cadore",
+        relation: "Bisavó • Esposa de Luigi Cadore",
+        direct: false,
+        foreignBorn: false,
+        brazilBorn: true,
+        category: "direct",
+        flag: "🇧🇷",
+        facts: [
+          { icon: "👶", text: "Nascida em 1889 no Rio Grande do Sul [GF67-TY1]" },
+          { icon: "👨‍👩‍👧", text: "Filha de Domenico Dequigiovanni e Carolina Fanton" },
+          { icon: "✝", text: "Falecida em 1960" }
+        ],
+        notes: "Matriarca que une a família Cadore ao ramo Dequigiovanni."
+      },
+      "cadore-gb-1853": {
+        name: "Giovanni Battista Cadore (João B.)",
+        relation: "Trisavô • O Imigrante Italiano",
+        direct: true,
+        foreignBorn: true,
+        brazilBorn: false,
+        category: "direct",
+        flag: "🇮🇹",
+        facts: [
+          { icon: "👶", text: "Nascido em 24/06/1853 na Itália [LB44-BL5]" },
+          { icon: "🚢", text: "Imigrou com a família para o Rio Grande do Sul" },
+          { icon: "💍", text: "Casado com Anna Maria Schirato" },
+          { icon: "✝", text: "Falecido em 05/05/1938" }
+        ],
+        notes: "Patriarca imigrante da família Cadore no Rio Grande do Sul."
+      },
+      "schirato-anna": {
+        name: "Anna Maria Schirato",
+        relation: "Trisavó • Esposa de Giovanni Battista Cadore",
+        direct: false,
+        foreignBorn: true,
+        brazilBorn: false,
+        category: "direct",
+        flag: "🇮🇹",
+        facts: [
+          { icon: "👶", text: "Nascida em 1860 na Itália [GM3K-SG5]" },
+          { icon: "✝", text: "Falecida em 1940" }
+        ],
+        notes: "Mãe de Luigi Cadore."
+      },
+      "cadore-gb-1809": {
+        name: "Giovanni Battista Cadore (Sênior)",
+        relation: "Tetravô • Patriarca mais antigo documentado",
+        direct: true,
+        foreignBorn: true,
+        brazilBorn: false,
+        category: "direct",
+        flag: "🇮🇹",
+        facts: [
+          { icon: "👶", text: "Nascido em 1809 na Itália (Vêneto) [G8BH-T84]" },
+          { icon: "💍", text: "Casado com Antonia Bonato" },
+          { icon: "✝", text: "Falecido em 1897 na Itália" }
+        ],
+        notes: "Raiz patrilinear documentada da família na Itália."
+      },
+      "bonato-antonia": {
+        name: "Antonia Bonato",
+        relation: "Tetravó • Esposa de Giovanni Battista Cadore (Sênior)",
+        direct: false,
+        foreignBorn: true,
+        brazilBorn: false,
+        category: "direct",
+        flag: "🇮🇹",
+        facts: [
+          { icon: "👶", text: "Nascida em 1818 na Itália [G8BC-S45]" },
+          { icon: "✝", text: "Falecida em 1893 na Itália" }
+        ],
+        notes: "Matriarca italiana do ramo Cadore."
+      }
+    },
+    documents: [
+      {
+        id: "cadore-lotes-1883",
+        type: "Registro de Terras Coloniais",
+        title: "Assentamento dos Imigrantes Cadore no RS (1883)",
+        date: "1883–1884",
+        repo: "Arquivo Histórico do Rio Grande do Sul",
+        image: "images/trajetoria_cadore_esquema.png",
+        keyFacts: [
+          "Imigrantes: <strong>Cadore Giovanni, Cadore Luigi e familiares</strong>",
+          "Procedência: <strong>Província de Belluno, Vêneto, Itália</strong>",
+          "Data de chegada ao lote colonial: <strong>1883</strong>",
+          "Localização: Núcleos coloniais da serra e interior gaúcho"
+        ],
+        transcription: `Registros oficiais da Diretoria Geral de Terras e Colonização comprovando o assentamento dos colonos da família Cadore oriundos de Belluno no Rio Grande do Sul.`,
+        sourceNote: "Documentação que comprova a chegada e o estabelecimento definitivo da linhagem no Brasil."
+      },
+      {
+        id: "cadore-obito-gb-1938",
+        type: "Registro Civil de Óbito",
+        title: "Óbito de Giovanni Battista Cadore (1938)",
+        date: "05 de Maio de 1938",
+        repo: "Registro Civil das Pessoas Naturais",
+        image: null,
+        keyFacts: [
+          "Falecido: <strong>Giovanni Battista Cadore</strong>",
+          "Idade: 84 anos",
+          "Esposa: Anna Maria Schirato",
+          "Filho direto: Luigi Cadore"
+        ],
+        transcription: `Assento comprovando o encerramento do ciclo vital do patriarca Giovanni Battista Cadore, deixando descendência estabelecida no Rio Grande do Sul.`,
+        sourceNote: "Registro fundamental na cadeia de certidões."
+      }
+    ],
+    timeline: [
+      { year: 1809, date: "1809", type: "birth", description: "Nascimento de <strong>Giovanni Battista Cadore (Sênior)</strong> na Itália.", location: "Belluno, Vêneto, Itália 🇮🇹" },
+      { year: 1818, date: "1818", type: "birth", description: "Nascimento de <strong>Antonia Bonato</strong>, futura esposa de Giovanni Battista Cadore.", location: "Itália 🇮🇹" },
+      { year: 1853, date: "24/06/1853", type: "birth", description: "Nascimento de <strong>Giovanni Battista Cadore</strong>, filho de Giovanni Battista e Antonia.", location: "Itália 🇮🇹" },
+      { year: 1860, date: "1860", type: "birth", description: "Nascimento de <strong>Anna Maria Schirato</strong> na Itália.", location: "Itália 🇮🇹" },
+      { year: 1883, date: "1883", type: "milestone", description: "Chegada dos núcleos familiares da <strong>Família Cadore</strong> ao Rio Grande do Sul e assentamento em lotes coloniais.", location: "Rio Grande do Sul 🇧🇷" },
+      { year: 1887, date: "1887", type: "birth", description: "Nascimento de <strong>Luigi Cadore</strong> no Rio Grande do Sul.", location: "Rio Grande do Sul 🇧🇷" },
+      { year: 1935, date: "1935", type: "birth", description: "Nascimento de <strong>Luiz Domingos Cadore</strong>, filho de Luigi Cadore e Emilia Dequigiovanni.", location: "Rio Grande do Sul 🇧🇷" },
+      { year: 1938, date: "05/05/1938", type: "death", description: "Falecimento de <strong>Giovanni Battista Cadore</strong> aos 84 anos.", location: "Rio Grande do Sul / Itália" },
+      { year: 1958, date: "1958", type: "birth", description: "Nascimento de <strong>Edison Luis Cadore</strong>.", location: "Rio Grande do Sul 🇧🇷" },
+      { year: 1966, date: "1966", type: "death", description: "Falecimento de <strong>Luigi Cadore</strong> aos 79 anos.", location: "Rio Grande do Sul 🇧🇷" },
+      { year: 1986, date: "1986", type: "birth", description: "Nascimento de <strong>Diego Cadore</strong>.", location: "Brasil 🇧🇷" },
+      { year: 2010, date: "2010", type: "death", description: "Falecimento de <strong>Luiz Domingos Cadore</strong>.", location: "Rio Grande do Sul 🇧🇷" },
+      { year: 2026, date: "2026", type: "death", description: "Falecimento de <strong>Edison Luis Cadore</strong>.", location: "Rio Grande do Sul 🇧🇷" }
+    ]
+  },
+
+  // ---------------------------------------------------------------------------
+  // 2. FAMÍLIA DEQUIGIOVANNI (Linhagem Materna-Paterna Italiana)
+  // ---------------------------------------------------------------------------
+  dequigiovanni: {
+    id: "dequigiovanni",
+    name: "Família Dequigiovanni",
+    originCode: "IT",
+    originLabel: "🇮🇹 Ramo Paterno Italiano — Vêneto / Vicenza / Mantova",
+    subtitle: "História, Documentos e Genealogia da Linhagem Materna de Edison Luis Cadore",
+    lineageText: "Francesco Dequigiovanni (1830) ➔ Domenico Dequigiovanni (1850) ➔ Emilia Dequigiovanni (1889) ➔ Luiz Domingos Cadore (1935) ➔ Edison Luis Cadore (1958) ➔ Diego Cadore",
+    hero: {
+      title: "Da Planície Vêneta de Vicenza e Mantova às Colônias Gaúchas",
+      text: `<p>A família <strong>Dequigiovanni (frequentemente grafada como De Quigiovanni ou Degiovanni)</strong> tem suas raízes históricas no norte da Itália, entre as províncias de <strong>Vicenza (Vêneto)</strong> e <strong>Mantova (Lombardia)</strong>.</p>
+             <p>O patriarca <strong>Francesco Dequigiovanni (nascido c. 1830)</strong> casou-se com <strong>Rosa Montagna (1822–1878)</strong>. Seu filho <strong>Domenico Dequigiovanni (1850–1915)</strong> casou-se com <strong>Carolina Fanton (nascida em 1857)</strong>.</p>
+             <p>A família emigrou para o Rio Grande do Sul durante o auge da colonização italiana. Em solo gaúcho, nasceu <strong>Emilia Dequigiovanni (1889–1960)</strong>, que ao se casar com <strong>Luigi Cadore</strong> uniu as duas históricas linhagens italianas da família.</p>`,
+      image: "images/trajetoria_dequigiovanni_fanton_esquema.png",
+      caption: "Esquema da trajetória e ramificações da Família Dequigiovanni & Fanton."
+    },
+    stats: [
+      { number: "5", label: "Gerações Mapeadas" },
+      { number: "1822", label: "Registro Mais Antigo (Rosa)" },
+      { number: "Vicenza", label: "Origem Vêneta" },
+      { number: "1889", label: "1ª Geração no RS (Emilia)" }
+    ],
+    stories: [
+      {
+        title: "🇮🇹 A Família Dequigiovanni & Fanton na Itália",
+        text: "<p>Originários do Vêneto e áreas fronteiriças com a Lombardia, os Dequigiovanni e os Fanton viveram as transformações agrárias e políticas do século XIX italiano antes de embarcarem nos portos de Gênova em direção ao Brasil.</p>",
+        featured: true
+      },
+      {
+        title: "🇧🇷 A Matriarca Emilia Dequigiovanni",
+        text: "<p>Nascida em 1889 no Rio Grande do Sul, Emilia Dequigiovanni foi figura central na preservação das tradições culinárias, linguísticas (talian) e religiosas que marcaram a formação de seus filhos e netos Cadore.</p>",
+        featured: false
+      }
+    ],
+    variations: [
+      { original: "Dequigiovanni", registered: "De Quigiovanni, Dequi Giovanni, Degiovanni", context: "Adaptação fonética e separação de partículas nos cartórios brasileiros" },
+      { original: "Fanton", registered: "Fanton, Fantoni", context: "Família materna de Carolina Fanton" },
+      { original: "Montagna", registered: "Montagna, Montegna", context: "Família de Rosa Montagna" }
+    ],
+    treePedigree: [
+      { level: "Geração 5 — Itália", nodes: [
+        { id: "dequigiovanni-francesco", name: "Francesco Dequigiovanni", dates: "c. 1830 — ?", place: "Itália 🇮🇹", foreign: true, flag: "🇮🇹" },
+        { id: "montagna-rosa", name: "Rosa Montagna", dates: "1822 — † 1878", place: "Itália 🇮🇹", foreign: true, flag: "🇮🇹" },
+        { id: "fanton-giuseppe", name: "Giuseppe Fanton", dates: "Itália 🇮🇹", foreign: true, flag: "🇮🇹" },
+        { id: "fanton-anna", name: "Anna Fanton", dates: "Itália 🇮🇹", foreign: true, flag: "🇮🇹" }
+      ]},
+      { level: "Geração 4 — Os Imigrantes", nodes: [
+        { id: "dequigiovanni-domenico", name: "Domenico Dequigiovanni", dates: "1850 — † 1915", place: "Itália 🇮🇹 ➔ RS 🇧🇷", direct: true, foreign: true, flag: "🇮🇹" },
+        { id: "fanton-carolina", name: "Carolina Fanton", dates: "1857 — ?", place: "Itália 🇮🇹 ➔ RS 🇧🇷", foreign: true, flag: "🇮🇹" }
+      ]},
+      { level: "Geração 3 — A Matriarca", nodes: [
+        { id: "dequigiovanni-emilia", name: "Emilia Dequigiovanni", dates: "1889 — † 1960", place: "Rio Grande do Sul 🇧🇷", direct: true },
+        { id: "cadore-luigi-tree2", name: "Luigi Cadore", dates: "1887 — † 1966", place: "Rio Grande do Sul 🇧🇷" }
+      ]},
+      { level: "Geração 2 — Avô", nodes: [
+        { id: "cadore-luiz-tree2", name: "Luiz Domingos Cadore", dates: "1935 — † 2010", place: "Rio Grande do Sul 🇧🇷", direct: true }
+      ]},
+      { level: "Geração 1 — Pai", nodes: [
+        { id: "cadore-edison-tree2", name: "Edison Luis Cadore", dates: "1958 — 2026", place: "Rio Grande do Sul 🇧🇷", direct: true }
+      ]},
+      { level: "Geração 0 — Requerente", nodes: [
+        { id: "cadore-diego-tree2", name: "Diego Cadore & Irmãos", dates: "1986 — Presente", place: "Brasil 🇧🇷", direct: true, root: true }
+      ]}
+    ],
+    connections: [
+      { child: "dequigiovanni-domenico", parents: ["dequigiovanni-francesco", "montagna-rosa"] },
+      { child: "fanton-carolina", parents: ["fanton-giuseppe", "fanton-anna"] },
+      { child: "dequigiovanni-emilia", parents: ["dequigiovanni-domenico", "fanton-carolina"] },
+      { child: "cadore-luiz-tree2", parents: ["dequigiovanni-emilia", "cadore-luigi-tree2"] },
+      { child: "cadore-edison-tree2", parents: ["cadore-luiz-tree2"] },
+      { child: "cadore-diego-tree2", parents: ["cadore-edison-tree2"] }
+    ],
+    treeRows: [
+      { label: "Geração 5 — Itália (Vicenza / Mantova)", people: ["dequigiovanni-francesco", "montagna-rosa", "fanton-giuseppe", "fanton-anna"] },
+      { label: "Geração 4 — Os Imigrantes Italianos", people: ["dequigiovanni-domenico", "fanton-carolina"] },
+      { label: "Geração 3 — Nascidos no Brasil", people: ["dequigiovanni-emilia", "cadore-luigi-tree2"] },
+      { label: "Geração 2 — Avô Paterno", people: ["cadore-luiz-tree2"] },
+      { label: "Geração 1 — Pai", people: ["cadore-edison-tree2"] },
+      { label: "Geração 0 — Filho", people: ["cadore-diego-tree2"] }
+    ],
+    people: {
+      "cadore-diego-tree2": {
+        name: "Diego Cadore",
+        relation: "Descendente da linhagem Dequigiovanni",
+        direct: true,
+        foreignBorn: false,
+        brazilBorn: true,
+        category: "direct",
+        flag: "🇧🇷",
+        facts: [{ icon: "👶", text: "Nascido em 1986 no Brasil" }]
+      },
+      "cadore-edison-tree2": {
+        name: "Edison Luis Cadore",
+        relation: "Filho de Luiz Domingos Cadore",
+        direct: true,
+        foreignBorn: false,
+        brazilBorn: true,
+        category: "direct",
+        flag: "🇧🇷",
+        facts: [{ icon: "👶", text: "Nascido em 1958 [G56H-KY2]" }, { icon: "✝", text: "Falecido em 2026" }]
+      },
+      "cadore-luiz-tree2": {
+        name: "Luiz Domingos Cadore",
+        relation: "Filho de Emilia Dequigiovanni e Luigi Cadore",
+        direct: true,
+        foreignBorn: false,
+        brazilBorn: true,
+        category: "direct",
+        flag: "🇧🇷",
+        facts: [{ icon: "👶", text: "Nascido em 1935 [G56C-RPX]" }, { icon: "✝", text: "Falecido em 2010" }]
+      },
+      "dequigiovanni-emilia": {
+        name: "Emilia Dequigiovanni Cadore",
+        relation: "Bisavó • Filha de Domenico Dequigiovanni e Carolina Fanton",
+        direct: true,
+        foreignBorn: false,
+        brazilBorn: true,
+        category: "direct",
+        flag: "🇧🇷",
+        facts: [
+          { icon: "👶", text: "Nascida em 1889 no Rio Grande do Sul [GF67-TY1]" },
+          { icon: "💍", text: "Casada com Luigi Cadore" },
+          { icon: "✝", text: "Falecida em 1960" }
+        ],
+        notes: "Matriarca Dequigiovanni no RS."
+      },
+      "cadore-luigi-tree2": {
+        name: "Luigi Cadore",
+        relation: "Esposo de Emilia Dequigiovanni",
+        direct: false,
+        foreignBorn: false,
+        brazilBorn: true,
+        category: "direct",
+        flag: "🇧🇷",
+        facts: [{ icon: "👶", text: "Nascido em 1887" }, { icon: "✝", text: "Falecido em 1966" }]
+      },
+      "dequigiovanni-domenico": {
+        name: "Domenico Dequigiovanni",
+        relation: "Trisavô • O Imigrante Italiano",
+        direct: true,
+        foreignBorn: true,
+        brazilBorn: false,
+        category: "direct",
+        flag: "🇮🇹",
+        facts: [
+          { icon: "👶", text: "Nascido em 1850 na Itália [GMDY-SQV]" },
+          { icon: "💍", text: "Casado com Carolina Fanton" },
+          { icon: "✝", text: "Falecido em 1915 no RS" }
+        ],
+        notes: "Imigrante pioneiro da família Dequigiovanni."
+      },
+      "fanton-carolina": {
+        name: "Carolina Fanton (Dequigiovanni)",
+        relation: "Trisavó • Esposa de Domenico Dequigiovanni",
+        direct: false,
+        foreignBorn: true,
+        brazilBorn: false,
+        category: "direct",
+        flag: "🇮🇹",
+        facts: [
+          { icon: "👶", text: "Nascida em 1857 na Itália [GMDY-HYP]" },
+          { icon: "👨‍👩‍👧", text: "Mãe de Emilia Dequigiovanni" }
+        ]
+      },
+      "dequigiovanni-francesco": {
+        name: "Francesco Dequigiovanni",
+        relation: "Tetravô • Itália",
+        direct: true,
+        foreignBorn: true,
+        brazilBorn: false,
+        category: "direct",
+        flag: "🇮🇹",
+        facts: [
+          { icon: "👶", text: "Nascido c. 1830 na Itália [GSC1-CN3]" },
+          { icon: "💍", text: "Casado com Rosa Montagna" }
+        ]
+      },
+      "montagna-rosa": {
+        name: "Rosa Montagna",
+        relation: "Tetravó • Esposa de Francesco Dequigiovanni",
+        direct: false,
+        foreignBorn: true,
+        brazilBorn: false,
+        category: "direct",
+        flag: "🇮🇹",
+        facts: [
+          { icon: "👶", text: "Nascida em 1822 na Itália [27GG-6X3]" },
+          { icon: "✝", text: "Falecida em 1878 na Itália" }
+        ]
+      },
+      "fanton-giuseppe": {
+        name: "Giuseppe Fanton",
+        relation: "Tetravô Materno • Itália",
+        direct: false,
+        foreignBorn: true,
+        brazilBorn: false,
+        category: "direct",
+        flag: "🇮🇹",
+        facts: [{ icon: "👶", text: "Nascido na Itália [GSRZ-D2J]" }]
+      },
+      "fanton-anna": {
+        name: "Anna Fanton",
+        relation: "Tetravó Materna • Itália",
+        direct: false,
+        foreignBorn: true,
+        brazilBorn: false,
+        category: "direct",
+        flag: "🇮🇹",
+        facts: [{ icon: "👶", text: "Nascida na Itália [GSRZ-PXM]" }]
+      }
+    },
+    documents: [
+      {
+        id: "dequigiovanni-obito-domenico",
+        type: "Certidão de Óbito",
+        title: "Óbito de Domenico Dequigiovanni (1915)",
+        date: "1915",
+        repo: "Cartório do Registro Civil do RS",
+        image: "images/trajetoria_dequigiovanni_fanton_esquema.png",
+        keyFacts: [
+          "Falecido: <strong>Domenico Dequigiovanni</strong>",
+          "Nascido em: <strong>1850 na Itália</strong>",
+          "Esposa: <strong>Carolina Fanton</strong>",
+          "Filha declarada: <strong>Emilia Dequigiovanni Cadore</strong>"
+        ],
+        transcription: `Assento de óbito de Domenico Dequigiovanni, imigrante italiano, estabelecido nas colônias agrícolas do Rio Grande do Sul.`,
+        sourceNote: "Documento oficial comprovando o parentesco de Emilia."
+      }
+    ],
+    timeline: [
+      { year: 1822, date: "1822", type: "birth", description: "Nascimento de <strong>Rosa Montagna</strong> na Itália.", location: "Itália 🇮🇹" },
+      { year: 1830, date: "c. 1830", type: "birth", description: "Nascimento de <strong>Francesco Dequigiovanni</strong> na Itália.", location: "Itália 🇮🇹" },
+      { year: 1850, date: "1850", type: "birth", description: "Nascimento de <strong>Domenico Dequigiovanni</strong>.", location: "Itália 🇮🇹" },
+      { year: 1857, date: "1857", type: "birth", description: "Nascimento de <strong>Carolina Fanton</strong> na Itália.", location: "Itália 🇮🇹" },
+      { year: 1878, date: "1878", type: "death", description: "Falecimento de <strong>Rosa Montagna</strong> na Itália.", location: "Itália 🇮🇹" },
+      { year: 1889, date: "1889", type: "birth", description: "Nascimento de <strong>Emilia Dequigiovanni</strong> no Rio Grande do Sul.", location: "Rio Grande do Sul 🇧🇷" },
+      { year: 1915, date: "1915", type: "death", description: "Falecimento de <strong>Domenico Dequigiovanni</strong> aos 65 anos.", location: "Rio Grande do Sul 🇧🇷" },
+      { year: 1960, date: "1960", type: "death", description: "Falecimento de <strong>Emilia Dequigiovanni Cadore</strong> aos 71 anos.", location: "Rio Grande do Sul 🇧🇷" }
+    ]
+  },
+
+  // ---------------------------------------------------------------------------
+  // 3. FAMÍLIA SZUBERT / SCHUBERT (Linhagem Materna-Patrilinear Polonesa)
+  // ---------------------------------------------------------------------------
+  schubert: {
+    id: "schubert",
+    name: "Família Szubert / Schubert",
+    originCode: "PL",
+    originLabel: "🇵🇱 Ramo Materno Polonês — Linha 8 Leste / Ijuí",
+    subtitle: "História, Documentos e Genealogia da Linhagem Patrilinear de Marlene Schubert Cadore",
+    lineageText: "Martin Schubert (~1850) ➔ Stanisław Schubert (1880) ➔ Felicio Schubert (1904) ➔ Ambrosio Schubert (1935) ➔ Marlene Schubert ➔ Diego Cadore",
+    hero: {
+      title: "Da Imigração no Vapor Darmstadt à Linha 8 Leste de Ijuí",
+      text: `<p>A história da família <strong>Schubert (grafia original: Szubert)</strong> no Brasil tem suas raízes no pioneirismo do patriarca <strong>Martin Schubert (Marcin Szubert, nascido c. 1846 em Brudnia/Louisenfelde, Inowrocław)</strong>, sua esposa <strong>Josefa Schubert (Józefa Niewiadomska, nascida c. 1859 na Cujávia)</strong> e de seu filho <strong>Stanisław Schubert (nascido em 1880/1881 na Polônia)</strong>.</p>
+             <p>Em 1890, a família empreendeu a travessia transatlântica a bordo do <strong>Vapor Darmstadt</strong>, aportando no Rio de Janeiro em 16 de dezembro de 1890. Foram acolhidos e registrados na Hospedaria dos Imigrantes antes de seguirem viagem para a recém-criada Colônia de Ijuí no Rio Grande do Sul, onde deram entrada em 29 de maio de 1891 (assentados inicialmente no Lote nº 6 da Linha 3 Leste, juntamente com os filhos Josefa, Stanisław, Agnieszka e Josef).</p>
+             <p>Posteriormente, consolidaram-se como proprietários no <strong>Lote nº 84 da Linha 8 Leste</strong>, com uma concessão de 25 hectares titulada pela Comissão de Terras (Códice MADP IJ 19). Mais tarde, Stanisław casou-se com <strong>Francisca Michalski (1885–1959)</strong>, filha dos imigrantes poloneses André Michalski e Marciana Brzuska, gerando <strong>Felicio Schubert (1904–1968)</strong>, pai de <strong>Ambrosio Schubert (1935–2024)</strong> e avô de Marlene.</p>`,
+      image: "images/Familia_Schubert_Imigracao_1890.jpg",
+      caption: "Fotografia histórica: Família Schubert reunida em Ijuí/RS (Acervo de Família)."
+    },
+    stats: [
+      { number: "5", label: "Gerações Documentadas" },
+      { number: "c. 1846", label: "Nasc. Martin (Brudnia/Polônia)" },
+      { number: "1890", label: "Chegada no Vapor Darmstadt" },
+      { number: "Lote 84", label: "Linha 8 Leste de Ijuí" }
+    ],
+    stories: [
+      {
+        title: "🇵🇱 A Chegada no Vapor Darmstadt e a Imigração (1890)",
+        text: "<p>Em 1890, Martin Schubert e sua família cruzaram o Oceano Atlântico no navio a vapor <strong>Darmstadt</strong>, chegando ao Rio de Janeiro em 16 de dezembro de 1890. O núcleo familiar incluía Marcin (44 anos), Józefa (31 anos), Stanisław (9 anos), Agnieszka (4 anos) e Josef (1 ano), que chegaram a Ijuí em 29 de maio de 1891.</p>",
+        featured: true
+      },
+      {
+        title: "🇧🇷 A Concessão do Lote 84 na Linha 8 Leste de Ijuí",
+        text: "<p>Os arquivos fundiários e cartográficos da colonização de Ijuí comprovam a concessão do <strong>Lote nº 84 da Linha 8 Leste</strong> (25 hectares, 250 x 1.000 m) titulada conjuntamente em nome de <strong>Martin Schubert</strong> e <strong>Stanisław Schubert</strong> (Códice MADP IJ 19), a 8 km a leste da Linha Base.</p>",
+        featured: false
+      }
+    ],
+    variations: [
+      { original: "Martin / Marcin", registered: "Martin Schubert, Martim, Marcin Szubert", context: "Patriarca imigrante (~1846, Brudnia/Louisenfelde)" },
+      { original: "Szubert", registered: "Schubert, Subert", context: "Sobrenome patrilinear de Martin, Stanisław, Felicio e Ambrosio" },
+      { original: "Stanisław", registered: "Estanislau, Stanislau, St. Szubert", context: "Filho de Martin, co-proprietário do Lote 84 (1880/1881–Ijuí)" },
+      { original: "Franciszka Michalska", registered: "Francisca Michalski / Francisca Szubert", context: "Esposa de Stanisław, filha de André Michalski e Marciana Brzuska" }
+    ],
+    treePedigree: [
+      { level: "Geração 5 — Polônia", nodes: [
+        { id: "schubert-martin", name: "Martin Schubert (Marcin)", dates: "c. 1846 — † 1931", place: "Brudnia (Inowrocław) 🇵🇱 ➔ Ijuí 🇧🇷", foreign: true, flag: "🇵🇱" },
+        { id: "schubert-josepha", name: "Josefa Schubert (Niewiadomska)", dates: "c. 1859 — † 1931", place: "Cujávia 🇵🇱 ➔ Ijuí 🇧🇷", foreign: true, flag: "🇵🇱" },
+        { id: "michalski-andre", name: "André Michalski", dates: "1853 — † 1931", place: "Marcjanów 🇵🇱 ➔ Ijuí 🇧🇷", foreign: true, flag: "🇵🇱" },
+        { id: "brzuska-marciana", name: "Marciana Brzuska", dates: "1865 — † 1936", place: "Polônia 🇵🇱 ➔ Ijuí 🇧🇷", foreign: true, flag: "🇵🇱" }
+      ]},
+      { level: "Geração 4 — Os Imigrantes", nodes: [
+        { id: "szubert-stanislaw", name: "Stanisław Schubert", dates: "1880 — † Ijuí/RS", place: "Polônia 🇵🇱 ➔ Ijuí 🇧🇷", direct: true, foreign: true, flag: "🇵🇱" },
+        { id: "michalski-francisca", name: "Francisca Michalski", dates: "1885 — † 1959", place: "Polônia 🇵🇱 ➔ Ijuí 🇧🇷", foreign: true, flag: "🇵🇱" }
+      ]},
+      { level: "Geração 3 — Bisavôs", nodes: [
+        { id: "schubert-felicio", name: "Felicio Schubert", dates: "1904 — † 1968", place: "Ijuí, Rio Grande do Sul 🇧🇷", direct: true },
+        { id: "jezorki-helena", name: "Helena Jezorki", dates: "1914 — † Ijuí/RS", place: "Ijuí, Rio Grande do Sul 🇧🇷" }
+      ]},
+      { level: "Geração 2 — Avô Materno", nodes: [
+        { id: "schubert-ambrosio", name: "Ambrosio Schubert", dates: "1935 — † 2024", place: "Ijuí, Rio Grande do Sul 🇧🇷", direct: true },
+        { id: "liczbinski-cecilia-tree", name: "Cecilia Liczbinski", dates: "1940 — † 2002", place: "Ijuí, Rio Grande do Sul 🇧🇷" }
+      ]},
+      { level: "Geração 1 — Mãe", nodes: [
+        { id: "schubert-marlene", name: "Marlene Schubert Cadore", dates: "Viva", place: "Rio Grande do Sul 🇧🇷", direct: true }
+      ]},
+      { level: "Geração 0 — Requerente", nodes: [
+        { id: "schubert-diego", name: "Diego Cadore & Irmãos", dates: "1986 — Presente", place: "Brasil 🇧🇷", direct: true, root: true }
+      ]}
+    ],
+    connections: [
+      { child: "szubert-stanislaw", parents: ["schubert-martin", "schubert-josepha"] },
+      { child: "michalski-francisca", parents: ["michalski-andre", "brzuska-marciana"] },
+      { child: "schubert-felicio", parents: ["szubert-stanislaw", "michalski-francisca"] },
+      { child: "schubert-ambrosio", parents: ["schubert-felicio", "jezorki-helena"] },
+      { child: "schubert-marlene", parents: ["schubert-ambrosio", "liczbinski-cecilia-tree"] },
+      { child: "schubert-diego", parents: ["schubert-marlene"] }
+    ],
+    treeRows: [
+      { label: "Geração 5 — Polônia (Patriarcas Imigrantes)", people: ["schubert-martin", "schubert-josepha", "michalski-andre", "brzuska-marciana"] },
+      { label: "Geração 4 — Os Imigrantes Poloneses", people: ["szubert-stanislaw", "michalski-francisca", "michalski-adao", "brudkewicz-estanislava"] },
+      { label: "Geração 3 — Nascidos no Brasil e Irmãos", people: ["schubert-felicio", "jezorki-helena", "schubert-wladislava", "schubert-jose", "schubert-casemiro", "schubert-romano"] },
+      { label: "Geração 2 — Avós Maternos", people: ["schubert-ambrosio", "liczbinski-cecilia-tree"] },
+      { label: "Geração 1 — Mãe", people: ["schubert-marlene"] },
+      { label: "Geração 0 — Filho", people: ["schubert-diego"] }
+    ],
+    people: {
+      "schubert-diego": {
+        name: "Diego Cadore",
+        relation: "Filho de Marlene Schubert e Edison Luis Cadore",
+        direct: true,
+        foreignBorn: false,
+        brazilBorn: true,
+        category: "direct",
+        flag: "🇧🇷",
+        facts: [{ icon: "👶", text: "Nascido em 1986 no Brasil" }, { icon: "🌳", text: "Geração 0 na linhagem" }]
+      },
+      "schubert-marlene": {
+        name: "Marlene Schubert Cadore",
+        relation: "Mãe • Filha de Ambrosio Schubert e Cecilia Liczbinski",
+        direct: true,
+        foreignBorn: false,
+        brazilBorn: true,
+        category: "direct",
+        flag: "🇧🇷",
+        facts: [{ icon: "👶", text: "Nascida no RS [G56W-2ZS]" }, { icon: "💍", text: "Casada com Edison Luis Cadore" }]
+      },
+      "schubert-ambrosio": {
+        name: "Ambrosio Schubert",
+        relation: "Avô Materno • Filho de Felicio Schubert e Anna Liczbinski",
+        direct: true,
+        foreignBorn: false,
+        brazilBorn: true,
+        category: "direct",
+        flag: "🇧🇷",
+        facts: [
+          { icon: "👶", text: "Nascido em 15/01/1935 em Ijuí/RS [GYHH-97Z]" },
+          { icon: "💍", text: "Casado com Cecilia Liczbinski" },
+          { icon: "✝", text: "Falecido em 15/09/2024 em Ijuí/RS (aos 89 anos)" }
+        ]
+      },
+      "liczbinski-cecilia-tree": {
+        name: "Cecilia Liczbinski Schubert",
+        relation: "Avó Materna • Esposa de Ambrosio Schubert",
+        direct: false,
+        foreignBorn: false,
+        brazilBorn: true,
+        category: "direct",
+        flag: "🇧🇷",
+        facts: [
+          { icon: "👶", text: "Nascida em 1940 em Ijuí/RS [GJ5Q-F9Z]" },
+          { icon: "✝", text: "Falecida em 17/02/2002 em Ijuí/RS" }
+        ]
+      },
+      "schubert-felicio": {
+        name: "Felicio Schubert (Felix)",
+        relation: "Bisavô • Primogênito brasileiro de Stanisław e Francisca",
+        direct: true,
+        foreignBorn: false,
+        brazilBorn: true,
+        category: "direct",
+        flag: "🇧🇷",
+        facts: [
+          { icon: "👶", text: "Nascido em 07/07/1904 em Ijuí/RS [GHDF-DGK]" },
+          { icon: "💍", text: "Casou-se em 1931 com Anna Liczbinski" },
+          { icon: "✝", text: "Falecido em 18/08/1968 em Ijuí/RS" }
+        ]
+      },
+      "jezorki-helena": {
+        name: "Helena Jezorki (Jeziorna)",
+        relation: "Bisavó • Esposa de Felicio Schubert [GHH3-G5J]",
+        direct: false,
+        foreignBorn: false,
+        brazilBorn: true,
+        category: "direct",
+        flag: "🇧🇷",
+        facts: [
+          { icon: "👶", text: "Nascida em 1914 em Ijuí/RS [GHH3-G5J]" },
+          { icon: "👨‍👩‍👧", text: "Filha de Vicente Jezorki e Angela Mazurkiewicz" },
+          { icon: "💍", text: "Casada em 1931 com Felicio Schubert no Registro Civil de Ijuí/RS" }
+        ]
+      },
+      "szubert-stanislaw": {
+        name: "Stanisław Schubert (Estanislau)",
+        relation: "Trisavô • O Imigrante da Linha 8 Leste [G8ZS-KBS]",
+        direct: true,
+        foreignBorn: true,
+        brazilBorn: false,
+        category: "direct",
+        flag: "🇵🇱",
+        facts: [
+          { icon: "👶", text: "Nascido em 1880/1881 na Polônia [G8ZS-KBS]" },
+          { icon: "🚢", text: "Imigrou em 1890 no Vapor Darmstadt com os pais Marcin e Józefa" },
+          { icon: "🏡", text: "Co-titular do Lote nº 84 da Linha 8 Leste de Ijuí (Códice MADP IJ 19)" },
+          { icon: "★", text: "Contribuiu em 1909 para a fundação da Escola Adam Mickiewicz (Periódico Kolonista, nº 4/5)" }
+        ]
+      },
+      "michalski-francisca": {
+        name: "Francisca Michalski (Szubert)",
+        relation: "Trisavó • Esposa de Stanisław Schubert",
+        direct: false,
+        foreignBorn: true,
+        brazilBorn: false,
+        category: "direct",
+        flag: "🇵🇱",
+        facts: [
+          { icon: "👶", text: "Nascida em 15/07/1885 na Polônia [GZYQ-YMD]" },
+          { icon: "👨‍👩‍👧", text: "Filha de André Michalski e Marciana Brzuska" },
+          { icon: "✝", text: "Falecida em 26/10/1959 em Ijuí/RS (aos 74 anos)" }
+        ]
+      },
+      "schubert-martin": {
+        name: "Martin Schubert (Marcin Szubert)",
+        relation: "Tetravô • Patriarca Imigrante da Linha 8 Leste",
+        direct: true,
+        foreignBorn: true,
+        brazilBorn: false,
+        category: "direct",
+        flag: "🇵🇱",
+        facts: [
+          { icon: "👶", text: "Nascido c. 1846 em Brudnia/Louisenfelde, Inowrocław [GDDX-TB3]" },
+          { icon: "🚢", text: "Imigrou em 1890 no Vapor Darmstadt com a esposa Józefa e os filhos" },
+          { icon: "📋", text: "Entrada registrada em Ijuí em 29/05/1891 (Lote nº 6 da Linha 3 Leste)" },
+          { icon: "🏡", text: "Concessionário pioneiro do Lote nº 84, Linha 8 Leste de Ijuí (Códice MADP IJ 19)" },
+          { icon: "✝", text: "Falecido até 1931 em Ijuí/RS" }
+        ]
+      },
+      "schubert-josepha": {
+        name: "Josefa Schubert (Józefa Niewiadomska)",
+        relation: "Tetravó • Esposa de Martin Schubert [GDDX-PCG]",
+        direct: false,
+        foreignBorn: true,
+        brazilBorn: false,
+        category: "direct",
+        flag: "🇵🇱",
+        facts: [
+          { icon: "👶", text: "Nascida c. 1859 na Cujávia, Polônia [GDDX-PCG]" },
+          { icon: "🚢", text: "Imigrou em 1890 no Vapor Darmstadt com Marcin e os filhos" },
+          { icon: "✝", text: "Falecida até 1931 em Ijuí/RS (documentada no matrimônio de Felicio)" }
+        ]
+      },
+      "michalski-andre": {
+        name: "André Michalski",
+        relation: "Tetravô • Patriarca Michalski",
+        direct: false,
+        foreignBorn: true,
+        brazilBorn: false,
+        category: "siblings",
+        flag: "🇵🇱",
+        facts: [{ icon: "👶", text: "Nascido em 26/11/1853 em Marcjanów, Polônia [G6P8-NCX]" }, { icon: "✝", text: "Falecido em 1940 em Ijuí/RS" }]
+      },
+      "brzuska-marciana": {
+        name: "Marciana Brzuska",
+        relation: "Tetravó • Esposa de André Michalski",
+        direct: false,
+        foreignBorn: true,
+        brazilBorn: false,
+        category: "siblings",
+        flag: "🇵🇱",
+        facts: [{ icon: "👶", text: "Nascida em 20/10/1865 na Polônia [GL33-6P8]" }]
+      },
+      "michalski-adao": {
+        name: "Adão Michalski",
+        relation: "Tio-Bisavô • Irmão de Francisca Michalski",
+        direct: false,
+        foreignBorn: true,
+        brazilBorn: false,
+        category: "siblings",
+        flag: "🇵🇱",
+        facts: [
+          { icon: "👶", text: "Nascido em 1888 na Polônia [G8YG-HRN]" },
+          { icon: "✝", text: "Falecido em 29/03/1973 em Ijuí/RS (confirmado por certidão e lápide)" }
+        ]
+      },
+      "brudkewicz-estanislava": {
+        name: "Estanislava Brudkewicz Michalski",
+        relation: "Tia-Bisavó por afinidade",
+        direct: false,
+        foreignBorn: true,
+        brazilBorn: false,
+        category: "siblings",
+        flag: "🇵🇱",
+        facts: [
+          { icon: "👶", text: "Nascida em 17/12/1896 na Polônia [G8Y1-286]" },
+          { icon: "✝", text: "Falecida em 1981 em Ijuí/RS (aos 85 anos)" }
+        ]
+      },
+      "schubert-wladislava": {
+        name: "Wladislava Schubert (Stamborowski)",
+        relation: "Tia-Bisavó • Primogênita",
+        direct: false,
+        foreignBorn: false,
+        brazilBorn: true,
+        category: "siblings",
+        flag: "🇧🇷",
+        facts: [{ icon: "👶", text: "Nascida em 05/05/1901 em Ijuí/RS" }, { icon: "✝", text: "Falecida em 1979" }]
+      },
+      "schubert-jose": {
+        name: "José Szubert",
+        relation: "Tio-Bisavô • Irmão de Felicio",
+        direct: false,
+        foreignBorn: false,
+        brazilBorn: true,
+        category: "siblings",
+        flag: "🇧🇷",
+        facts: [{ icon: "👶", text: "Nascido em 20/08/1909 em Ijuí/RS" }]
+      },
+      "schubert-casemiro": {
+        name: "Casemiro Szubert",
+        relation: "Tio-Bisavô • Irmão de Felicio",
+        direct: false,
+        foreignBorn: false,
+        brazilBorn: true,
+        category: "siblings",
+        flag: "🇧🇷",
+        facts: [{ icon: "👶", text: "Nascido em 08/05/1913 em Ijuí/RS" }, { icon: "✝", text: "Falecido em 1989" }]
+      },
+      "schubert-romano": {
+        name: "Romano Bernardo Szubert",
+        relation: "Tio-Bisavô • Irmão de Felicio",
+        direct: false,
+        foreignBorn: false,
+        brazilBorn: true,
+        category: "siblings",
+        flag: "🇧🇷",
+        facts: [{ icon: "👶", text: "Nascido em 20/08/1915 em Ijuí/RS" }, { icon: "✝", text: "Falecido em 2000" }]
+      }
+    },
+    documents: [
+      {
+        id: "ilha-flores-1890-doc",
+        type: "Registro Oficial de Imigração",
+        title: "Registro de Imigração no Vapor Darmstadt (1890) e Assentamento",
+        date: "1890 / 1891",
+        repo: "Arquivo Nacional do Rio de Janeiro • Diretoria Geral de Terras e Colonização",
+        image: null,
+        keyFacts: [
+          "Chegada: <strong>Vapor Darmstadt</strong> (16/12/1890 no RJ)",
+          "Imigrantes: <strong>Marcin Szubert</strong> (44a), <strong>Józefa</strong> (31a), <strong>Stanisław</strong> (9a), <strong>Agnieszka</strong> (4a) e <strong>Josef</strong> (1a)",
+          "Entrada em Ijuí: 29 de Maio de 1891 (Lote nº 6 da Linha 3 Leste)",
+          "Destino Definitivo: Lote nº 84 da Linha 8 Leste / Ijuí"
+        ],
+        transcription: `Registro oficial de imigração e transporte pelo Vapor Darmstadt, aportando no Rio de Janeiro em 16/12/1890, com entrada formal e assentamento da família Szubert na Colônia de Ijuí/RS em 29 de maio de 1891.`,
+        sourceNote: "Documento primário comprovando a data exata de imigração e composição familiar completa."
+      },
+      {
+        id: "lote-84-ijui-doc",
+        type: "Concessão e Titulação Fundiária",
+        title: "Concessão do Lote nº 84 — Linha 8 Leste de Ijuí",
+        date: "1890 / 1891",
+        repo: "Arquivo Histórico do RS (AHRS) • Códice MADP IJ 19",
+        image: null,
+        keyFacts: [
+          "Concessionários: <strong>Martin Schubert</strong> e <strong>Stanisław Schubert</strong>",
+          "Localização: Linha 8 Leste, Lote nº 84 (a 8 km da Linha Base)",
+          "Área: 25 hectares (250 metros de frente por 1.000 metros de fundo)",
+          "Registro: Códice MADP IJ 19, Comissão de Terras e Colonização de Ijuhy"
+        ],
+        transcription: `Concessão de terras coloniais pelo Governo do Estado do Rio Grande do Sul aos colonos Martin Schubert e Stanisław Schubert, referente ao lote rural nº 84 da Linha 8 Leste da Colônia de Ijuhy.`,
+        sourceNote: "Comprova o assentamento e posse agrária definitiva da família em Ijuí."
+      },
+      {
+        id: "kolonista-1909-doc",
+        type: "Registro de Imprensa Histórica",
+        title: "Contribuição para a Escola Adam Mickiewicz em Ijuí (1909)",
+        date: "1909",
+        repo: "Periódico „Kolonista” (Ijuhy/RS) • Acervo CEPOL/UFPR",
+        image: "images/kolonista_1909_stanislaw_szubert_doacao_escola.png",
+        keyFacts: [
+          "Subscritor: <strong>Stanisław Szubert („St. Szubert”)</strong>",
+          "Ato: Contribuição financeira formal para a Escola Comunitária Polonesa",
+          "Fascículo: Ano I (1909), nº 4/5, página 40"
+        ],
+        transcription: `Subscrição pública de auxílio e donativos em dinheiro dos pioneiros colonos para a construção da Escola Polonesa Adam Mickiewicz na colônia de Ijuí.`,
+        sourceNote: "Preservado no CEPOL/UFPR e na Sociedade de Cristo de Curitiba."
+      },
+      {
+        id: "nasc-felicio-1904-doc",
+        type: "Registro Civil de Nascimento",
+        title: "Nascimento de Felicio Schubert (1904)",
+        date: "07 de Julho de 1904",
+        repo: "Cartório de Registro Civil de Ijuí/RS",
+        image: null,
+        keyFacts: [
+          "Registrado: <strong>Felicio Schubert</strong>",
+          "Pais: Estanislau Schubert e Francisca Michalski"
+        ],
+        transcription: `Aos sete dias de julho de 1904, em Ijuí, foi registrado o nascimento de Felicio Schubert, filho legítimo de Estanislau Schubert e de Francisca Michalski...`,
+        sourceNote: "Primeira certidão civil da linhagem no Brasil."
+      }
+    ],
+    timeline: [
+      { year: 1846, date: "c. 1846", type: "birth", description: "Nascimento do patriarca <strong>Martin Schubert (Marcin Szubert)</strong> em Brudnia/Louisenfelde, Inowrocław.", location: "Brudnia, Polônia 🇵🇱" },
+      { year: 1853, date: "26/11/1853", type: "birth", description: "Nascimento de <strong>André Michalski</strong> em Marcjanów.", location: "Marcjanów, Polônia 🇵🇱" },
+      { year: 1859, date: "c. 1859", type: "birth", description: "Nascimento de <strong>Józefa Niewiadomska</strong> na região da Cujávia.", location: "Cujávia, Polônia 🇵🇱" },
+      { year: 1865, date: "20/10/1865", type: "birth", description: "Nascimento de <strong>Marciana Brzuska</strong>.", location: "Polônia 🇵🇱" },
+      { year: 1880, date: "1880/1881", type: "birth", description: "Nascimento de <strong>Stanisław Schubert</strong> na Polônia, filho de Marcin e Józefa.", location: "Polônia 🇵🇱" },
+      { year: 1885, date: "15 de Julho de 1885", type: "birth", description: "Nascimento de <strong>Francisca Michalski</strong> na Polônia.", location: "Polônia 🇵🇱" },
+      { year: 1888, date: "1888", type: "birth", description: "Nascimento de <strong>Adão Michalski</strong> na Polônia.", location: "Polônia 🇵🇱" },
+      { year: 1890, date: "16/12/1890", type: "milestone", description: "Chegada no <strong>Vapor Darmstadt</strong> ao Rio de Janeiro e posterior entrada em Ijuí em 29/05/1891 (Linha 3 Leste Lote 6 e posterior concessão do Lote 84 na Linha 8 Leste).", location: "Bremen ➔ Rio de Janeiro ➔ Ijuí/RS 🇧🇷" },
+      { year: 1904, date: "07 de Julho de 1904", type: "birth", description: "Nascimento de <strong>Felicio Schubert</strong> em Ijuí/RS.", location: "Ijuí, Rio Grande do Sul 🇧🇷" },
+      { year: 1909, date: "1909", type: "milestone", description: "Contribuição financeira de <strong>Stanisław Szubert</strong> para a Escola Polonesa Adam Mickiewicz no periódico <em>Kolonista</em> (pág. 40).", location: "Colônia de Ijuhy, RS 🇧🇷" },
+      { year: 1931, date: "1931", type: "marriage", description: "Matrimônio de <strong>Felicio Schubert</strong> com <strong>Anna Liczbinski</strong>.", location: "Ijuí, Rio Grande do Sul 🇧🇷" },
+      { year: 1935, date: "15 de Janeiro de 1935", type: "birth", description: "Nascimento de <strong>Ambrosio Schubert</strong> em Ijuí/RS.", location: "Ijuí, Rio Grande do Sul 🇧🇷" },
+      { year: 1959, date: "26 de Outubro de 1959", type: "death", description: "Falecimento de <strong>Francisca Michalski Szubert</strong> aos 74 anos em Ijuí/RS.", location: "Ijuí, Rio Grande do Sul 🇧🇷" },
+      { year: 1968, date: "18 de Agosto de 1968", type: "death", description: "Falecimento de <strong>Felicio Schubert</strong> aos 64 anos em Ijuí/RS.", location: "Ijuí, Rio Grande do Sul 🇧🇷" },
+      { year: 1973, date: "29 de Março de 1973", type: "death", description: "Falecimento de <strong>Adão Michalski</strong> em Ijuí/RS.", location: "Ijuí, Rio Grande do Sul 🇧🇷" },
+      { year: 1986, date: "1986", type: "birth", description: "Nascimento de <strong>Diego Cadore</strong>.", location: "Brasil 🇧🇷" },
+      { year: 2024, date: "15 de Setembro de 2024", type: "death", description: "Falecimento de <strong>Ambrosio Schubert</strong> aos 89 anos em Ijuí/RS.", location: "Ijuí, Rio Grande do Sul 🇧🇷" }
+    ]
+  },
+
+  // ---------------------------------------------------------------------------
+  // 4. FAMÍLIA LICZBINSKI (Linhagem Materna-Materna Polonesa)
+  // ---------------------------------------------------------------------------
+  liczbinski: {
+    id: "liczbinski",
+    name: "Família Liczbinski",
+    originCode: "PL",
+    originLabel: "🇵🇱 Ramo Materno Polonês — Wielkopolskie / Ijuí / Linha 8 Leste",
+    subtitle: "História, Documentos e Genealogia da Linhagem de Cecilia Liczbinski Schubert",
+    lineageText: "Constante Liczbinski (1860) ➔ José Liczbinski (1892) ➔ Ignacio Liczbinski (1916) ➔ Cecilia Liczbinski (1940) ➔ Marlene Schubert ➔ Diego Cadore",
+    hero: {
+      title: "Os Pioneiros da Grande Colonização Polonesa em Ijuí",
+      text: `<p>A família <strong>Liczbiński (no Brasil grafada como Liczbinski ou Lisbinski)</strong> constitui um dos pilares mais tradicionais da colonização polonesa no noroeste gaúcho, especialmente nas <strong>Linhas 3, 6 e 8 Leste e Linha Formosa de Ijuí</strong>.</p>
+             <p>A linhagem remonta a <strong>Constante Liczbinski (Konstanty, 1860–1914)</strong> e sua esposa <strong>Tecla Bobrowski (1864–1914)</strong>. Seu filho <strong>José Liczbinski (1892–1942)</strong> casou-se em 1914 com <strong>Francisca Rospierski (1899–1938)</strong>, filha dos imigrantes Leon Rozpierski e Józefa Wiśniewska.</p>
+             <p>Desse casamento nasceu <strong>Ignacio Liczbinski (1916–1987)</strong>, que ao contrair matrimônio com <strong>Anna Skonieski (1919–2012)</strong>, filha de João Skonieski e Josepha Przybulinski, uniu quatro troncos poloneses históricos. Seus filhos incluem <strong>Cecilia Liczbinski (1940–2002)</strong>, mãe de Marlene e avó de Diego Cadore.</p>`,
+      image: "images/trajetoria_liczbinski_cichocka_esquema.png",
+      caption: "Esquema da trajetória e ramificações da Família Liczbinski & conexões em Ijuí/RS."
+    },
+    stats: [
+      { number: "5", label: "Gerações Mapeadas" },
+      { number: "1860", label: "Registro Mais Antigo" },
+      { number: "Linha 8", label: "Núcleo Pioneiro em Ijuí" },
+      { number: "100%", label: "Ascendência Polonesa" }
+    ],
+    stories: [
+      {
+        title: "🇵🇱 A Chegada dos Liczbinski e Rospierski a Ijuí",
+        text: "<p>Nas últimas décadas do século XIX, famílias inteiras emigraram das províncias polonesas sob domínio da Prússia e da Rússia. Constante Liczbinski e Leon Rozpierski receberam lotes coloniais na Linha 8 Leste, organizando a agricultura de subsistência e a devoção comunitária.</p>",
+        featured: true
+      },
+      {
+        title: "🌾 A União dos Quatro Ramos: Liczbinski, Skonieski, Przybulinski e Rozpierski",
+        text: "<p>Com o casamento de Ignacio Liczbinski e Anna Skonieski, convergiram quatro importantes famílias polonesas pioneiras, cuja descendência floresceu em Ijuí ao longo de todo o século XX.</p>",
+        featured: false
+      }
+    ],
+    variations: [
+      { original: "Liczbiński / Liczbińska", registered: "Liczbinski, Lisbinski, Liszbinski", context: "Grafia aportuguesada nos cartórios civis gaúchos" },
+      { original: "Skonieczki / Skonieski", registered: "Skonieski, Skonieczny", context: "Família de Anna Skonieski" },
+      { original: "Przybyliński", registered: "Przybulinski, Przibulinski", context: "Família de Josepha Przybulinski" },
+      { original: "Rozpierski", registered: "Rospierski, Rozpęrski", context: "Família de Francisca Rospierski" }
+    ],
+    treePedigree: [
+      { level: "Geração 5 — Polônia", nodes: [
+        { id: "liczbinski-constante", name: "Constante Liczbinski", dates: "1860 — † 1914", place: "Polônia 🇵🇱 ➔ Ijuí 🇧🇷", foreign: true, flag: "🇵🇱" },
+        { id: "bobrowski-tecla", name: "Tecla Bobrowski", dates: "1864 — † 1914", place: "Polônia 🇵🇱 ➔ Ijuí 🇧🇷", foreign: true, flag: "🇵🇱" },
+        { id: "skonieski-joao-sr", name: "João Skonieski (Sênior)", dates: "1862 — † 1925", place: "Polônia 🇵🇱 ➔ Ijuí 🇧🇷", foreign: true, flag: "🇵🇱" },
+        { id: "skonieski-helena", name: "Helena Nowakowska (Skonieski)", dates: "1868 — † 1948", place: "Polônia 🇵🇱 ➔ Ijuí 🇧🇷", foreign: true, flag: "🇵🇱" },
+        { id: "przybulinski-albino", name: "Albino Przybulinski", dates: "1861 — † 1951", place: "Polônia 🇵🇱 ➔ Ijuí 🇧🇷", foreign: true, flag: "🇵🇱" }
+      ]},
+      { level: "Geração 4 — Pioneiros em Ijuí", nodes: [
+        { id: "liczbinski-jose", name: "José Liczbinski", dates: "1892 — † 1942", place: "Ijuí, RS 🇧🇷", direct: true },
+        { id: "rospierski-francisca", name: "Francisca Rospierski", dates: "1899 — † 1938", place: "Ijuí, RS 🇧🇷" },
+        { id: "skonieski-joao-jr", name: "João Skonieski (Júnior)", dates: "1891 — † 1941", place: "Ijuí, RS 🇧🇷" },
+        { id: "przybulinski-josepha", name: "Josepha Przybulinski", dates: "1896 — † 1979", place: "Ijuí, RS 🇧🇷" }
+      ]},
+      { level: "Geração 3 — Bisavôs", nodes: [
+        { id: "liczbinski-ignacio", name: "Ignacio Liczbinski", dates: "1916 — † 1987", place: "Ijuí, Rio Grande do Sul 🇧🇷", direct: true },
+        { id: "skonieski-anna", name: "Anna Skonieski", dates: "1919 — † 2012", place: "Ijuí, Rio Grande do Sul 🇧🇷" }
+      ]},
+      { level: "Geração 2 — Avó Materna", nodes: [
+        { id: "liczbinski-cecilia", name: "Cecilia Liczbinski", dates: "1940 — † 2002", place: "Ijuí, Rio Grande do Sul 🇧🇷", direct: true },
+        { id: "schubert-ambrosio-tree3", name: "Ambrosio Schubert", dates: "1935 — † 2024", place: "Ijuí, Rio Grande do Sul 🇧🇷" }
+      ]},
+      { level: "Geração 1 — Mãe", nodes: [
+        { id: "schubert-marlene-tree3", name: "Marlene Schubert Cadore", dates: "Viva", place: "Rio Grande do Sul 🇧🇷", direct: true }
+      ]},
+      { level: "Geração 0 — Requerente", nodes: [
+        { id: "liczbinski-diego", name: "Diego Cadore & Irmãos", dates: "1986 — Presente", place: "Brasil 🇧🇷", direct: true, root: true }
+      ]}
+    ],
+    connections: [
+      { child: "liczbinski-jose", parents: ["liczbinski-constante", "bobrowski-tecla"] },
+      { child: "skonieski-joao-jr", parents: ["skonieski-joao-sr", "skonieski-helena"] },
+      { child: "skonieski-anna", parents: ["skonieski-joao-jr", "przybulinski-josepha"] },
+      { child: "liczbinski-ignacio", parents: ["liczbinski-jose", "rospierski-francisca"] },
+      { child: "liczbinski-cecilia", parents: ["liczbinski-ignacio", "skonieski-anna"] },
+      { child: "schubert-marlene-tree3", parents: ["liczbinski-cecilia", "schubert-ambrosio-tree3"] },
+      { child: "liczbinski-diego", parents: ["schubert-marlene-tree3"] }
+    ],
+    treeRows: [
+      { label: "Geração 5 — Polônia e Primeiros Imigrantes", people: ["liczbinski-constante", "bobrowski-tecla", "skonieski-joao-sr", "skonieski-helena", "przybulinski-albino"] },
+      { label: "Geração 4 — Colonizadores de Ijuí/RS", people: ["liczbinski-jose", "rospierski-francisca", "skonieski-joao-jr", "przybulinski-josepha"] },
+      { label: "Geração 3 — Bisavôs", people: ["liczbinski-ignacio", "skonieski-anna"] },
+      { label: "Geração 2 — Avó Materna", people: ["liczbinski-cecilia", "schubert-ambrosio-tree3"] },
+      { label: "Geração 1 — Mãe", people: ["schubert-marlene-tree3"] },
+      { label: "Geração 0 — Filho", people: ["liczbinski-diego"] }
+    ],
+    people: {
+      "liczbinski-diego": {
+        name: "Diego Cadore",
+        relation: "Descendente da linhagem Liczbinski",
+        direct: true,
+        foreignBorn: false,
+        brazilBorn: true,
+        category: "direct",
+        flag: "🇧🇷",
+        facts: [{ icon: "👶", text: "Nascido em 1986 no Brasil" }]
+      },
+      "schubert-marlene-tree3": {
+        name: "Marlene Schubert Cadore",
+        relation: "Mãe • Filha de Cecilia Liczbinski",
+        direct: true,
+        foreignBorn: false,
+        brazilBorn: true,
+        category: "direct",
+        flag: "🇧🇷",
+        facts: [{ icon: "👶", text: "Nascida no RS [G56W-2ZS]" }]
+      },
+      "liczbinski-cecilia": {
+        name: "Cecilia Liczbinski Schubert",
+        relation: "Avó Materna • Filha de Ignacio e Anna",
+        direct: true,
+        foreignBorn: false,
+        brazilBorn: true,
+        category: "direct",
+        flag: "🇧🇷",
+        facts: [
+          { icon: "👶", text: "Nascida em 1940 em Ijuí/RS [GJ5Q-F9Z]" },
+          { icon: "💍", text: "Casada com Ambrosio Schubert" },
+          { icon: "✝", text: "Falecida em 17/02/2002 em Ijuí/RS" }
+        ],
+        notes: "Matriarca do ramo polonês Liczbinski em Ijuí."
+      },
+      "schubert-ambrosio-tree3": {
+        name: "Ambrosio Schubert",
+        relation: "Esposo de Cecilia Liczbinski",
+        direct: false,
+        foreignBorn: false,
+        brazilBorn: true,
+        category: "direct",
+        flag: "🇧🇷",
+        facts: [{ icon: "👶", text: "Nascido em 1935" }, { icon: "✝", text: "Falecido em 2024" }]
+      },
+      "liczbinski-ignacio": {
+        name: "Ignacio Liczbinski",
+        relation: "Bisavô • Filho de José Liczbinski e Francisca Rospierski",
+        direct: true,
+        foreignBorn: false,
+        brazilBorn: true,
+        category: "direct",
+        flag: "🇧🇷",
+        facts: [
+          { icon: "👶", text: "Nascido em 1916 em Ijuí/RS [GQ1D-241]" },
+          { icon: "💍", text: "Casado com Anna Skonieski" },
+          { icon: "✝", text: "Falecido em 1987 em Ijuí/RS" }
+        ]
+      },
+      "skonieski-anna": {
+        name: "Anna Skonieski Liczbinski",
+        relation: "Bisavó • Esposa de Ignacio Liczbinski",
+        direct: false,
+        foreignBorn: false,
+        brazilBorn: true,
+        category: "direct",
+        flag: "🇧🇷",
+        facts: [
+          { icon: "👶", text: "Nascida em 1919 em Ijuí/RS [GMBN-N43]" },
+          { icon: "✝", text: "Falecida em 2012 em Ijuí/RS (aos 93 anos)" }
+        ]
+      },
+      "liczbinski-jose": {
+        name: "José Liczbinski (Józef Liczbiński)",
+        relation: "Trisavô • Filho de Constante e Tecla",
+        direct: true,
+        foreignBorn: false,
+        brazilBorn: true,
+        category: "direct",
+        flag: "🇧🇷",
+        facts: [
+          { icon: "👶", text: "Nascido em 1892 [GMBN-9LR]" },
+          { icon: "💍", text: "Casou-se em 28/05/1914 com Francisca Rospierski" },
+          { icon: "✝", text: "Falecido em 1942 em Ijuí/RS" }
+        ]
+      },
+      "rospierski-francisca": {
+        name: "Francisca Rospierski (Liczbinski)",
+        relation: "Trisavó • Esposa de José Liczbinski",
+        direct: false,
+        foreignBorn: false,
+        brazilBorn: true,
+        category: "direct",
+        flag: "🇧🇷",
+        facts: [
+          { icon: "👶", text: "Nascida em 1899 [GMBF-1GW]" },
+          { icon: "✝", text: "Falecida em 1938 em Ijuí/RS" }
+        ]
+      },
+      "skonieski-joao-jr": {
+        name: "João Skonieski (Júnior)",
+        relation: "Trisavô • Pai de Anna Skonieski",
+        direct: false,
+        foreignBorn: false,
+        brazilBorn: true,
+        category: "direct",
+        flag: "🇧🇷",
+        facts: [
+          { icon: "👶", text: "Nascido em 1891 [GP9H-XP1]" },
+          { icon: "💍", text: "Casou-se em 31/01/1914 com Josepha Przybulinski" },
+          { icon: "✝", text: "Falecido em 1941 em Ijuí/RS" }
+        ]
+      },
+      "przybulinski-josepha": {
+        name: "Josepha Przybulinski Skonieski",
+        relation: "Trisavó • Mãe de Anna Skonieski",
+        direct: false,
+        foreignBorn: false,
+        brazilBorn: true,
+        category: "direct",
+        flag: "🇧🇷",
+        facts: [
+          { icon: "👶", text: "Nascida em 1896 [GMBN-MYM]" },
+          { icon: "✝", text: "Falecida em 1979 em Ijuí/RS" }
+        ]
+      },
+      "liczbinski-constante": {
+        name: "Constante Liczbinski (Konstanty)",
+        relation: "Tetravô • O Imigrante Polaco",
+        direct: true,
+        foreignBorn: true,
+        brazilBorn: false,
+        category: "direct",
+        flag: "🇵🇱",
+        facts: [
+          { icon: "👶", text: "Nascido em 1860 na Polônia [GMBN-9PT]" },
+          { icon: "✝", text: "Falecido em 1914 em Ijuí/RS" }
+        ],
+        notes: "Patriarca imigrante na Linha 8 Leste de Ijuí."
+      },
+      "bobrowski-tecla": {
+        name: "Tecla Bobrowski (Tekla)",
+        relation: "Tetravó • Esposa de Constante Liczbinski",
+        direct: false,
+        foreignBorn: true,
+        brazilBorn: false,
+        category: "direct",
+        flag: "🇵🇱",
+        facts: [
+          { icon: "👶", text: "Nascida em 1864 na Polônia [GMBN-M4T]" },
+          { icon: "✝", text: "Falecida em 1914 em Ijuí/RS" }
+        ]
+      },
+      "skonieski-joao-sr": {
+        name: "João Skonieski (Sênior)",
+        relation: "Tetravô • Imigrante Polaco",
+        direct: false,
+        foreignBorn: true,
+        brazilBorn: false,
+        category: "direct",
+        flag: "🇵🇱",
+        facts: [
+          { icon: "👶", text: "Nascido em 1862 na Polônia [GMBN-SFQ]" },
+          { icon: "✝", text: "Falecido em 1925 em Ijuí/RS" }
+        ]
+      },
+      "skonieski-helena": {
+        name: "Helena Nowakowska (Skonieski)",
+        relation: "Tetravó • Imigrante Polaca [GMBN-W7X]",
+        direct: false,
+        foreignBorn: true,
+        brazilBorn: false,
+        category: "direct",
+        flag: "🇵🇱",
+        facts: [
+          { icon: "👶", text: "Nascida em 15/08/1868 na Polônia [GMBN-W7X]" },
+          { icon: "👨‍👩‍👧", text: "Filha de Antoni Nowakowski e Franciszka" },
+          { icon: "📜", text: "Identificada como avó paterna no nascimento do neto Adão (1921)" },
+          { icon: "✝", text: "Falecida em 28/06/1948 em Ijuí/RS" }
+        ]
+      },
+      "przybulinski-albino": {
+        name: "Albino Przybulinski",
+        relation: "Tetravô • Imigrante Polaco",
+        direct: false,
+        foreignBorn: true,
+        brazilBorn: false,
+        category: "direct",
+        flag: "🇵🇱",
+        facts: [
+          { icon: "👶", text: "Nascido em 1861 na Polônia [KC6D-3QP]" },
+          { icon: "✝", text: "Falecido em 1951 em Ijuí/RS (aos 90 anos)" }
+        ]
+      }
+    },
+    documents: [
+      {
+        id: "casamento-liczbinski-1914",
+        type: "Registro Civil de Casamento",
+        title: "Casamento de José Liczbinski e Francisca Rospierski (1914)",
+        date: "28 de Maio de 1914",
+        repo: "Cartório do Registro Civil de Ijuí/RS",
+        image: "images/trajetoria_liczbinski_cichocka_esquema.png",
+        keyFacts: [
+          "Noivo: <strong>José Liczbinski</strong> (filho de Constante Liczbinski e Tecla Bobrowski)",
+          "Noiva: <strong>Francisca Rospierski</strong> (filha de Leon Rozpierski e Józefa Wiśniewska)",
+          "Data do ato: 28/05/1914 em Ijuí/RS"
+        ],
+        transcription: `Assento de matrimônio civil lavrado em Ijuí unindo duas das famílias polonesas mais destacadas da linha rural de Ijuí.`,
+        sourceNote: "Registro fundamental que une os ramos Liczbinski e Rospierski."
+      },
+      {
+        id: "casamento-skonieski-1914",
+        type: "Registro Civil de Casamento",
+        title: "Casamento de João Skonieski e Josepha Przybulinski (1914)",
+        date: "31 de Janeiro de 1914",
+        repo: "Cartório do Registro Civil de Ijuí/RS",
+        image: null,
+        keyFacts: [
+          "Noivo: <strong>João Skonieski</strong>",
+          "Noiva: <strong>Josepha Przybulinski</strong>",
+          "Data: 31/01/1914 em Ijuí/RS"
+        ],
+        transcription: `Assento matrimonial consolidando a união dos ramos Skonieski e Przybulinski em Ijuí.`,
+        sourceNote: "Pais de Anna Skonieski (avó de Marlene)."
+      }
+    ],
+    timeline: [
+      { year: 1860, date: "1860", type: "birth", description: "Nascimento de <strong>Constante Liczbinski</strong> na Polônia.", location: "Polônia 🇵🇱" },
+      { year: 1861, date: "1861", type: "birth", description: "Nascimento de <strong>Albino Przybulinski</strong> na Polônia.", location: "Polônia 🇵🇱" },
+      { year: 1862, date: "1862", type: "birth", description: "Nascimento de <strong>João Skonieski (Sênior)</strong> na Polônia.", location: "Polônia 🇵🇱" },
+      { year: 1864, date: "1864", type: "birth", description: "Nascimento de <strong>Tecla Bobrowski</strong> na Polônia.", location: "Polônia 🇵🇱" },
+      { year: 1891, date: "1891", type: "birth", description: "Nascimento de <strong>João Skonieski (Júnior)</strong>.", location: "Ijuí, Rio Grande do Sul 🇧🇷" },
+      { year: 1892, date: "1892", type: "birth", description: "Nascimento de <strong>José Liczbinski</strong>.", location: "Ijuí, Rio Grande do Sul 🇧🇷" },
+      { year: 1896, date: "1896", type: "birth", description: "Nascimento de <strong>Josepha Przybulinski</strong>.", location: "Ijuí, Rio Grande do Sul 🇧🇷" },
+      { year: 1899, date: "1899", type: "birth", description: "Nascimento de <strong>Francisca Rospierski</strong>.", location: "Ijuí, Rio Grande do Sul 🇧🇷" },
+      { year: 1914, date: "31/01/1914", type: "marriage", description: "Casamento de <strong>João Skonieski</strong> e <strong>Josepha Przybulinski</strong> em Ijuí.", location: "Ijuí, Rio Grande do Sul 🇧🇷" },
+      { year: 1914, date: "28/05/1914", type: "marriage", description: "Casamento de <strong>José Liczbinski</strong> e <strong>Francisca Rospierski</strong> em Ijuí.", location: "Ijuí, Rio Grande do Sul 🇧🇷" },
+      { year: 1916, date: "1916", type: "birth", description: "Nascimento de <strong>Ignacio Liczbinski</strong>.", location: "Ijuí, Rio Grande do Sul 🇧🇷" },
+      { year: 1919, date: "1919", type: "birth", description: "Nascimento de <strong>Anna Skonieski</strong>.", location: "Ijuí, Rio Grande do Sul 🇧🇷" },
+      { year: 1940, date: "1940", type: "birth", description: "Nascimento de <strong>Cecilia Liczbinski</strong>.", location: "Ijuí, Rio Grande do Sul 🇧🇷" },
+      { year: 1987, date: "1987", type: "death", description: "Falecimento de <strong>Ignacio Liczbinski</strong> aos 71 anos.", location: "Ijuí, Rio Grande do Sul 🇧🇷" },
+      { year: 2002, date: "17/02/2002", type: "death", description: "Falecimento de <strong>Cecilia Liczbinski Schubert</strong> em Ijuí.", location: "Ijuí, Rio Grande do Sul 🇧🇷" },
+      { year: 2012, date: "2012", type: "death", description: "Falecimento de <strong>Anna Skonieski Liczbinski</strong> aos 93 anos.", location: "Ijuí, Rio Grande do Sul 🇧🇷" }
+    ]
+  }
+
+};
+
+// =============================================================================
+// MOTOR DE RENDERIZAÇÃO & INTERATIVIDADE
+// =============================================================================
+
+let currentFamilyKey = 'schubert';
+
+function selectFamily(key) {
+  if (!FAMILIES_DATABASE[key]) key = 'schubert';
+  currentFamilyKey = key;
+
+  // Atualiza hash da URL sem recarregar
+  if (history.pushState) {
+    history.pushState(null, null, '#' + key);
+  } else {
+    location.hash = '#' + key;
+  }
+
+  // Atualiza botões no topo
+  document.querySelectorAll('.family-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.fid === key);
+  });
+
+  const fam = FAMILIES_DATABASE[key];
+
+  // Atualiza tema e cabeçalho
+  document.body.setAttribute('data-origin', fam.originCode);
+  document.getElementById('header-badge').innerHTML = fam.originLabel;
+  document.getElementById('header-title').textContent = fam.name;
+  document.getElementById('header-subtitle').textContent = fam.subtitle;
+  document.getElementById('header-lineage').textContent = fam.lineageText;
+
+  // Renderiza Aba 1: Início
+  renderHomeTab(fam);
+
+  // Renderiza Aba 2: Árvore
+  renderTreeTab(fam);
+
+  // Renderiza Aba 3: Pessoas
+  renderPeopleTab(fam);
+
+  // Renderiza Aba 4: Documentos
+  renderDocumentsTab(fam);
+
+  // Renderiza Aba 5: Linha do Tempo
+  renderTimelineTab(fam);
+
+  // Redesenha linhas SVG se árvore estiver visível
+  if (document.getElementById('tree').classList.contains('active')) {
+    setTimeout(() => drawTreeLines(fam), 100);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// RENDERIZAÇÃO DA ABA 1: INÍCIO
+// -----------------------------------------------------------------------------
+function renderHomeTab(fam) {
+  // Banner
+  document.getElementById('hero-banner-container').innerHTML = `
+    <div>
+      <h3 style="margin-top:0; color:var(--accent);">${fam.hero.title}</h3>
+      ${fam.hero.text}
+    </div>
+    <div class="hero-img-wrap" onclick="openLightbox('${fam.hero.image}')">
+      <img src="${fam.hero.image}" alt="${fam.name}">
+      <div class="hero-caption">${fam.hero.caption} Clique para ampliar.</div>
+    </div>
+  `;
+
+  // Stats
+  document.getElementById('stats-container').innerHTML = fam.stats.map(s => `
+    <div class="stat-card">
+      <div class="number">${s.number}</div>
+      <div class="label">${s.label}</div>
+    </div>
+  `).join('');
+
+  // Stories
+  document.getElementById('family-stories-container').innerHTML = fam.stories.map(st => `
+    <div class="story-card ${st.featured ? 'featured' : ''}">
+      <h3>${st.title}</h3>
+      ${st.text}
+    </div>
+  `).join('');
+
+  // Tabela de Variações
+  document.getElementById('variations-table-container').innerHTML = `
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Grafia Histórica Original</th>
+          <th>Grafias Registradas no Brasil</th>
+          <th>Parentesco / Contexto</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${fam.variations.map(v => `
+          <tr>
+            <td><strong>${v.original}</strong></td>
+            <td>${v.registered}</td>
+            <td>${v.context}</td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  `;
+}
+
+// -----------------------------------------------------------------------------
+// RENDERIZAÇÃO DA ABA 2: ÁRVORE
+// -----------------------------------------------------------------------------
+function renderTreeTab(fam) {
+  const container = document.getElementById('pedigree-inner-container');
+  container.innerHTML = fam.treePedigree.map(lvl => `
+    <div class="pedigree-level">
+      ${lvl.nodes.map(n => `
+        <div>
+          <div class="pedigree-level-title">${lvl.level}</div>
+          <div class="node ${n.direct ? 'direct' : ''} ${n.foreign ? 'foreign-born' : ''} ${n.root ? 'root-target' : ''}" data-id="${n.id}" data-flag="${n.flag || '🇧🇷'}">
+            <div class="node-name">${n.name}</div>
+            <div class="node-dates">${n.dates}</div>
+            <div class="node-place">${n.place}</div>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `).join('');
+
+  // Eventos de clique nos nós
+  container.querySelectorAll('.node').forEach(el => {
+    el.addEventListener('click', () => showPersonModal(el.dataset.id));
+  });
+
+  // Visão em Linhas
+  const rowsContainer = document.getElementById('tree-rows');
+  rowsContainer.innerHTML = `<div class="gens-rows">${fam.treeRows.map(row => `
+    <div class="gen-block">
+      <h4>${row.label}</h4>
+      <div class="gen-row">
+        ${row.people.map(id => {
+          const p = fam.people[id];
+          if (!p) return '';
+          return `
+            <div class="node ${p.direct ? 'direct' : ''} ${p.foreignBorn ? 'foreign-born' : ''}" data-id="${id}" data-flag="${p.flag || '🇧🇷'}">
+              <div class="node-name">${p.name}</div>
+              <div class="node-dates">${formatDates(p)}</div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    </div>
+  `).join('')}</div>`;
+
+  rowsContainer.querySelectorAll('.node').forEach(el => {
+    el.addEventListener('click', () => showPersonModal(el.dataset.id));
+  });
+
+  setTimeout(() => drawTreeLines(fam), 150);
+}
+
+function drawTreeLines(fam) {
+  const pedigreeInner = document.getElementById('pedigree-inner-container');
+  if (!pedigreeInner) return;
+
+  const existingSvg = pedigreeInner.querySelector('svg.tree-lines');
+  if (existingSvg) existingSvg.remove();
+
+  const w = pedigreeInner.offsetWidth;
+  const h = pedigreeInner.offsetHeight;
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('class', 'tree-lines');
+  svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+  svg.setAttribute('preserveAspectRatio', 'none');
+
+  (fam.connections || []).forEach(conn => {
+    const childEl = pedigreeInner.querySelector(`.node[data-id="${conn.child}"]`);
+    if (!childEl) return;
+    const parentRect = pedigreeInner.getBoundingClientRect();
+    const childRect = childEl.getBoundingClientRect();
+    const cx = childRect.left + childRect.width / 2 - parentRect.left;
+    const cy = childRect.top - parentRect.top;
+
+    let parentCenters = [];
+    conn.parents.forEach(pid => {
+      const pEl = pedigreeInner.querySelector(`.node[data-id="${pid}"]`);
+      if (pEl) {
+        const pr = pEl.getBoundingClientRect();
+        parentCenters.push({
+          x: pr.left + pr.width / 2 - parentRect.left,
+          y: pr.bottom - parentRect.top
+        });
+      }
+    });
+
+    if (parentCenters.length === 0) return;
+
+    const avgX = parentCenters.reduce((s, p) => s + p.x, 0) / parentCenters.length;
+    const avgY = parentCenters.reduce((s, p) => s + p.y, 0) / parentCenters.length;
+    const midY = (avgY + cy) / 2;
+
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    const d = `M ${avgX} ${avgY} L ${avgX} ${midY} L ${cx} ${midY} L ${cx} ${cy}`;
+    path.setAttribute('d', d);
+    path.setAttribute('stroke', 'var(--tree-line)');
+    path.setAttribute('stroke-width', '2');
+    path.setAttribute('fill', 'none');
+    path.setAttribute('stroke-linejoin', 'round');
+    svg.appendChild(path);
+  });
+
+  pedigreeInner.insertBefore(svg, pedigreeInner.firstChild);
+}
+
+// -----------------------------------------------------------------------------
+// RENDERIZAÇÃO DA ABA 3: PESSOAS
+// -----------------------------------------------------------------------------
+function renderPeopleTab(fam, filter = 'all') {
+  const grid = document.getElementById('people-grid');
+  const ids = Object.keys(fam.people).filter(id => {
+    const p = fam.people[id];
+    if (filter === 'all') return true;
+    if (filter === 'direct') return p.direct;
+    if (filter === 'europe-born') return p.foreignBorn;
+    if (filter === 'brazil-born') return p.brazilBorn;
+    if (filter === 'siblings') return p.category === 'siblings';
+    return true;
+  });
+
+  grid.innerHTML = ids.map(id => {
+    const p = fam.people[id];
+    return `
+      <div class="person-card ${p.direct ? 'direct' : ''}" onclick="showPersonModal('${id}')">
+        <div>
+          <div class="header">
+            <div class="name">${p.name}</div>
+            <span style="font-size:1.25rem;">${p.flag || '🇧🇷'}</span>
+          </div>
+          <div class="relation">${p.relation}</div>
+          <ul class="facts">
+            ${p.facts.map(f => `<li><span class="icon">${f.icon}</span><span>${f.text}</span></li>`).join('')}
+          </ul>
+        </div>
+        ${p.notes ? `<div class="notes">${p.notes}</div>` : ''}
+      </div>
+    `;
+  }).join('');
+}
+
+function formatDates(p) {
+  const b = (p.facts || []).find(f => f.text.includes("Nascid"));
+  const d = (p.facts || []).find(f => f.text.includes("Falec"));
+  let parts = [];
+  if (b) {
+    const m = b.text.match(/(\d{2}\/\d{2}\/\d{4}|\d{4})/);
+    if (m) parts.push(m[1]);
+  }
+  if (d) {
+    const m = d.text.match(/(\d{2}\/\d{2}\/\d{4}|\d{4})/);
+    if (m) parts.push("† " + m[1]);
+  }
+  return parts.length ? parts.join(' — ') : '';
+}
+
+// -----------------------------------------------------------------------------
+// RENDERIZAÇÃO DA ABA 4: DOCUMENTOS
+// -----------------------------------------------------------------------------
+function renderDocumentsTab(fam) {
+  const list = document.getElementById('documents-list');
+  list.innerHTML = (fam.documents || []).map(doc => `
+    <div class="doc-card" data-id="${doc.id}">
+      <div class="doc-header" onclick="toggleDoc('${doc.id}')">
+        <div class="doc-info">
+          <span class="doc-type">${doc.type}</span>
+          <div class="doc-title">${doc.title}</div>
+          <div class="doc-meta">📅 ${doc.date} &nbsp;•&nbsp; 🏛 ${doc.repo}</div>
+        </div>
+        <div class="doc-toggle">▾</div>
+      </div>
+      <div class="doc-body">
+        ${doc.image ? `
+          <h5>Fac-símile / Imagem Documental</h5>
+          <div class="doc-image-wrap">
+            <img src="${doc.image}" alt="${doc.title}" onclick="openLightbox('${doc.image}')">
+            <div class="doc-image-caption">Clique na imagem para inspecionar em alta definição</div>
+          </div>
+        ` : ''}
+
+        <h5>Fatos Extraídos do Registro</h5>
+        <ul class="key-facts">
+          ${doc.keyFacts.map(f => `<li>${f}</li>`).join('')}
+        </ul>
+
+        <h5>Transcrição / Contexto do Assento</h5>
+        <div class="transcription">${doc.transcription}</div>
+
+        ${doc.sourceNote ? `
+          <h5>Nota Arquivística</h5>
+          <p style="font-size:0.88rem; color:var(--ink-soft); font-style:italic;">${doc.sourceNote}</p>
+        ` : ''}
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleDoc(id) {
+  const card = document.querySelector(`.doc-card[data-id="${id}"]`);
+  if (card) card.classList.toggle('expanded');
+}
+
+// -----------------------------------------------------------------------------
+// RENDERIZAÇÃO DA ABA 5: LINHA DO TEMPO
+// -----------------------------------------------------------------------------
+function renderTimelineTab(fam) {
+  const decades = {};
+  (fam.timeline || []).forEach(e => {
+    const dec = Math.floor(e.year / 10) * 10;
+    if (!decades[dec]) decades[dec] = [];
+    decades[dec].push(e);
+  });
+
+  const sortedDecades = Object.keys(decades).map(Number).sort((a, b) => a - b);
+
+  const jump = document.getElementById('timeline-jump');
+  jump.innerHTML = `<span>Ir direto para década:</span>` + sortedDecades.map(d =>
+    `<a href="#decade-${d}">${d}s</a>`
+  ).join('');
+
+  const container = document.getElementById('timeline-decades');
+  container.innerHTML = sortedDecades.map(decade => {
+    const events = decades[decade].sort((a, b) => a.year - b.year);
+    return `
+      <div class="decade-block" id="decade-${decade}">
+        <div class="decade-header">
+          <span>Década de ${decade}</span>
+          <span class="count">${events.length} evento${events.length === 1 ? '' : 's'}</span>
+        </div>
+        <div class="decade-events">
+          ${events.map(e => `
+            <div class="timeline-event" data-type="${e.type}">
+              <div class="event-icon">${eventIcon(e.type)}</div>
+              <div class="event-body">
+                <span class="event-year">${e.year}</span>
+                <span class="event-date">— ${e.date}</span>
+                <div class="event-desc">${e.description}</div>
+                ${e.location ? `<div class="event-loc">📍 ${e.location}</div>` : ''}
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function eventIcon(type) {
+  return {
+    birth: '👶',
+    death: '✝',
+    marriage: '💍',
+    milestone: '★'
+  }[type] || '•';
+}
+
+function filterTimeline(type) {
+  document.querySelectorAll('.timeline-event').forEach(e => {
+    if (type === 'all' || e.dataset.type === type) {
+      e.classList.remove('hidden');
+    } else {
+      e.classList.add('hidden');
+    }
+  });
+
+  document.querySelectorAll('.decade-block').forEach(block => {
+    const visible = block.querySelectorAll('.timeline-event:not(.hidden)').length;
+    block.style.display = visible === 0 ? 'none' : 'block';
+  });
+}
+
+// -----------------------------------------------------------------------------
+// MODAL & LIGHTBOX
+// -----------------------------------------------------------------------------
+function showPersonModal(id) {
+  const fam = FAMILIES_DATABASE[currentFamilyKey];
+  const p = fam.people[id];
+  if (!p) return;
+  document.getElementById('modal-title').innerHTML = `${p.name} ${p.flag || '🇧🇷'}`;
+  document.getElementById('modal-body').innerHTML = `
+    <p style="color:var(--ink-faint); font-style:italic; margin-bottom:1rem;">${p.relation}</p>
+    <ul style="list-style:none; margin-bottom:1rem;">
+      ${p.facts.map(f => `<li style="padding:0.4rem 0; display:flex; gap:0.6rem;"><span style="color:var(--gold); font-size:1.1rem;">${f.icon}</span><span>${f.text}</span></li>`).join('')}
+    </ul>
+    ${p.notes ? `<div style="padding-top:0.8rem; border-top:1px dashed var(--border); font-style:italic; color:var(--ink-soft); font-size:0.9rem;">${p.notes}</div>` : ''}
+  `;
+  document.getElementById('modal-backdrop').classList.add('active');
+}
+
+function closeModal() {
+  document.getElementById('modal-backdrop').classList.remove('active');
+}
+
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('active');
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox-img').src = '';
+  document.getElementById('lightbox').classList.remove('active');
+}
+
+// -----------------------------------------------------------------------------
+// EVENT LISTENERS & INICIALIZAÇÃO
+// -----------------------------------------------------------------------------
+
+// Switcher de Família
+document.querySelectorAll('.family-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    selectFamily(btn.dataset.fid);
+  });
+});
+
+// Navegação por Abas
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const tab = btn.dataset.tab;
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    document.getElementById(tab).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (tab === 'tree') {
+      setTimeout(() => drawTreeLines(FAMILIES_DATABASE[currentFamilyKey]), 100);
+    }
+  });
+});
+
+// Alternância da Árvore (Pedigree vs Linhas)
+document.querySelectorAll('.tree-view-toggle button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tree-view-toggle button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const view = btn.dataset.view;
+    document.getElementById('tree-pedigree').style.display = view === 'pedigree' ? 'block' : 'none';
+    document.getElementById('tree-rows').style.display = view === 'rows' ? 'block' : 'none';
+    if (view === 'pedigree') setTimeout(() => drawTreeLines(FAMILIES_DATABASE[currentFamilyKey]), 50);
+  });
+});
+
+// Filtros de Pessoas
+document.querySelectorAll('#people-filter-bar .filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#people-filter-bar .filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderPeopleTab(FAMILIES_DATABASE[currentFamilyKey], btn.dataset.filter);
+  });
+});
+
+// Filtros de Linha do Tempo
+document.querySelectorAll('.timeline-controls .filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.timeline-controls .filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    filterTimeline(btn.dataset.tlfilter);
+  });
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeModal();
+    closeLightbox();
+  }
+});
+
+window.addEventListener('resize', () => {
+  if (document.getElementById('tree').classList.contains('active')) {
+    drawTreeLines(FAMILIES_DATABASE[currentFamilyKey]);
+  }
+});
+
+// Checagem de Hash inicial na URL (ex: #cadore, #dequigiovanni, #schubert, #liczbinski)
+const initialHash = (location.hash || '').replace('#', '').toLowerCase();
+if (FAMILIES_DATABASE[initialHash]) {
+  selectFamily(initialHash);
+} else {
+  selectFamily('schubert');
+}
+</script>
+
+</body>
+</html>
