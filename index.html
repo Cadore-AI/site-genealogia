@@ -40,25 +40,14 @@
   }
 
   
-  /* Tema Real Português (Linhagem Real • Rimeni & Filhos) */
-  body[data-origin="PT"] {
-    --accent: #0f2b5c;
-    --accent-soft: #1d4586;
-    --accent-gradient: linear-gradient(135deg, #091730 0%, #0f2b5c 50%, #183b78 100%);
-    --gold: #b8860b;
-    --badge-bg: rgba(15, 43, 92, 0.15);
-    --badge-border: rgba(184, 134, 11, 0.45);
-    --badge-text: #0f2b5c;
-  }
-
-  
   /* Estilos do Seletor das 4 Linhagens Reais */
   .royal-lines-box {
     background: linear-gradient(135deg, rgba(15, 43, 92, 0.06) 0%, rgba(184, 134, 11, 0.08) 100%);
     border: 2px solid rgba(184, 134, 11, 0.4);
     border-radius: 16px;
     padding: 24px;
-    margin: 24px 0 32px 0;
+    margin: 20px auto 25px auto;
+    max-width: 1300px;
     box-shadow: 0 8px 24px rgba(15, 43, 92, 0.08);
   }
   .royal-lines-header {
@@ -1234,50 +1223,170 @@
 </header>
 
 
-    <!-- SELETOR DAS QUATRO LINHAGENS REAIS -->
-    <div class="royal-lines-box" id="royal-lines-box" style="display:none; max-width:1300px; margin:20px auto 25px auto;">
-      <div class="royal-lines-header">
-        <div class="royal-crown-badge">👑</div>
-        <div>
-          <h3 class="royal-lines-title">A Quádrupla Ascendência Régia de Rimeni Guarda Farias Cadore</h3>
-          <p class="royal-lines-subtitle">Rimeni descende de <strong>D. Afonso I Henriques (1º Rei de Portugal)</strong> e <strong>D. Afonso III</strong> por <strong>quatro vias independentes</strong> (duas paternas e duas maternas). Selecione a linhagem que deseja inspecionar:</p>
-        </div>
-      </div>
-      <div class="subline-cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
-        <button class="subline-btn active" data-subline="paterna_a" onclick="switchRoyalSubline('paterna_a')">
-          <div class="subline-btn-icon">🔵</div>
-          <div class="subline-btn-content">
-            <span class="subline-badge-tag tag-blue">LADO PATERNO A</span>
-            <strong>Linha 1: Alves de Faria & Açores</strong>
-            <p>26 Gerações: Raul Farias ➔ Laurentino Alves ➔ Rui Gomes da Silva ➔ <strong>D. Afonso Henriques</strong></p>
-          </div>
-        </button>
-        <button class="subline-btn" data-subline="paterna_b" onclick="switchRoyalSubline('paterna_b')">
-          <div class="subline-btn-icon">🔷</div>
-          <div class="subline-btn-content">
-            <span class="subline-badge-tag tag-cyan">LADO PATERNO B</span>
-            <strong>Linha 2: Pinheiro & Afonso Dinis</strong>
-            <p>26 Gerações: Alcinda da Silva ➔ Modesto Pinheiro ➔ Furtado de Mendonça ➔ <strong>D. Afonso Henriques</strong></p>
-          </div>
-        </button>
-        <button class="subline-btn" data-subline="materna_a" onclick="switchRoyalSubline('materna_a')">
-          <div class="subline-btn-icon">🟣</div>
-          <div class="subline-btn-content">
-            <span class="subline-badge-tag tag-purple">LADO MATERNO A</span>
-            <strong>Linha 3: Ávila & Alvarenga</strong>
-            <p>34 Gerações: Maria da Gloria Machado ➔ Alvarenga ➔ Casa de Sousa ➔ <strong>D. Afonso Henriques</strong> (287 fontes)</p>
-          </div>
-        </button>
-        <button class="subline-btn" data-subline="materna_b" onclick="switchRoyalSubline('materna_b')">
-          <div class="subline-btn-icon">🟢</div>
-          <div class="subline-btn-content">
-            <span class="subline-badge-tag tag-emerald">LADO MATERNO B</span>
-            <strong>Linha 4: Fundador do Rio de Janeiro</strong>
-            <p>28 Gerações: Francisco R. Silva ➔ Antônio de Mariz (1565) ➔ Branca de Mello ➔ <strong>D. Afonso III</strong></p>
-          </div>
-        </button>
-      </div>
+<!-- SELETOR DAS QUATRO LINHAGENS REAIS -->
+<div class="royal-lines-box" id="royal-lines-box" style="display:none;">
+  <div class="royal-lines-header">
+    <div class="royal-crown-badge">👑</div>
+    <div>
+      <h3 class="royal-lines-title">A Quádrupla Ascendência Régia de Rimeni Guarda Farias Cadore</h3>
+      <p class="royal-lines-subtitle">Rimeni descende de <strong>D. Afonso I Henriques (1º Rei de Portugal)</strong> e <strong>D. Afonso III</strong> por <strong>quatro vias independentes</strong> (duas paternas e duas maternas). Selecione a linhagem que deseja inspecionar:</p>
     </div>
+  </div>
+  <div class="subline-cards-grid">
+    <button class="subline-btn active" data-subline="paterna_a" onclick="switchRoyalSubline('paterna_a')">
+      <div class="subline-btn-icon">🔵</div>
+      <div class="subline-btn-content">
+        <span class="subline-badge-tag tag-blue">LADO PATERNO A</span>
+        <strong>Linha 1: Alves de Faria & Açores</strong>
+        <p>26 Gerações: Raul Farias ➔ Laurentino Alves ➔ Rui Gomes da Silva ➔ <strong>D. Afonso Henriques</strong></p>
+      </div>
+    </button>
+    <button class="subline-btn" data-subline="paterna_b" onclick="switchRoyalSubline('paterna_b')">
+      <div class="subline-btn-icon">🔷</div>
+      <div class="subline-btn-content">
+        <span class="subline-badge-tag tag-cyan">LADO PATERNO B</span>
+        <strong>Linha 2: Pinheiro & Afonso Dinis</strong>
+        <p>26 Gerações: Alcinda da Silva ➔ Modesto Pinheiro ➔ Furtado de Mendonça ➔ <strong>D. Afonso Henriques</strong></p>
+      </div>
+    </button>
+    <button class="subline-btn" data-subline="materna_a" onclick="switchRoyalSubline('materna_a')">
+      <div class="subline-btn-icon">🟣</div>
+      <div class="subline-btn-content">
+        <span class="subline-badge-tag tag-purple">LADO MATERNO A</span>
+        <strong>Linha 3: Ávila & Alvarenga</strong>
+        <p>34 Gerações: Maria da Gloria Machado ➔ Alvarenga ➔ Casa de Sousa ➔ <strong>D. Afonso Henriques</strong> (287 fontes)</p>
+      </div>
+    </button>
+    <button class="subline-btn" data-subline="materna_b" onclick="switchRoyalSubline('materna_b')">
+      <div class="subline-btn-icon">🟢</div>
+      <div class="subline-btn-content">
+        <span class="subline-badge-tag tag-emerald">LADO MATERNO B</span>
+        <strong>Linha 4: Fundador do Rio de Janeiro</strong>
+        <p>28 Gerações: Francisco R. Silva ➔ Antônio de Mariz (1565) ➔ Branca de Mello ➔ <strong>D. Afonso III</strong></p>
+      </div>
+    </button>
+  </div>
+</div>
+
+<nav class="tabs">
+  <ul>
+    <li><button class="tab-btn active" data-tab="home">🏛 Início</button></li>
+    <li><button class="tab-btn" data-tab="tree">🌳 Árvore Genealógica</button></li>
+    <li><button class="tab-btn" data-tab="trajectory">🧭 Trajetória</button></li>
+    <li><button class="tab-btn" data-tab="people">👥 Pessoas</button></li>
+    <li><button class="tab-btn" data-tab="documents">📜 Documentos & Certidões</button></li>
+    <li><button class="tab-btn" data-tab="timeline">⏳ Linha do Tempo</button></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- =========================================================================
+       TAB 1: INÍCIO (Visão Geral da Família Selecionada)
+       ========================================================================= -->
+  <section id="home" class="view active">
+    <h2>🏛 História & Memória Familiar</h2>
+
+    <div class="hero-banner" id="hero-banner-container"></div>
+
+    <div class="stats" id="stats-container"></div>
+
+    <div id="family-stories-container"></div>
+
+    <h3>Variação de Grafias Documentais ao Longo das Gerações</h3>
+    <p>Com a imigração e as anotações cartorárias brasileiras, sobrenomes e prenomes assumiram grafias locais:</p>
+    <div id="variations-table-container"></div>
+  </section>
+
+  <!-- =========================================================================
+       TAB 2: ÁRVORE GENEALÓGICA
+       ========================================================================= -->
+  <section id="tree" class="view">
+    <h2>🌳 Árvore Genealógica da Linhagem</h2>
+
+    <div class="tree-view-toggle">
+      <button class="active" data-view="pedigree">Visão Pedigree Interativa</button>
+      <button data-view="rows">Visão em Linhas (Gerações)</button>
+    </div>
+
+    <div id="tree-pedigree" class="pedigree-container">
+      <div class="pedigree-inner" id="pedigree-inner-container"></div>
+    </div>
+
+    <div id="tree-rows" style="display: none;"></div>
+  </section>
+
+  <!-- =========================================================================
+       TAB 3: TRAJETÓRIA & MIGRAÇÃO
+       ========================================================================= -->
+  <section id="trajectory" class="view">
+    <h2>🧭 Trajetória Migratória & Territorial</h2>
+    <p>Do berço ancestral europeu aos núcleos de colonização e assentamento no Rio Grande do Sul:</p>
+
+    <div class="tree-view-toggle" id="trajectory-view-toggle">
+      <button class="active" data-trjview="both">✦ Visão Completa (Etapas + Mapa)</button>
+      <button data-trjview="steps">📋 Roteiro Estruturado (Econômico)</button>
+      <button data-trjview="map">🗺️ Esquema / Diagrama Visual</button>
+    </div>
+
+    <div id="trajectory-content"></div>
+  </section>
+
+  <!-- =========================================================================
+       TAB 3: PESSOAS
+       ========================================================================= -->
+  <section id="people" class="view">
+    <h2>👥 Antepassados & Familiares Mapeados</h2>
+
+    <div class="filter-bar" id="people-filter-bar">
+      <button class="filter-btn active" data-filter="all">Todos</button>
+      <button class="filter-btn" data-filter="direct">Linhagem Direta</button>
+      <button class="filter-btn" data-filter="europe-born">Nascidos na Europa</button>
+      <button class="filter-btn" data-filter="brazil-born">Nascidos no Brasil 🇧🇷</button>
+      <button class="filter-btn" data-filter="siblings">Irmãos & Colaterais</button>
+    </div>
+
+    <div class="people-grid" id="people-grid"></div>
+  </section>
+
+  <!-- =========================================================================
+       TAB 4: DOCUMENTOS & CERTIDÕES
+       ========================================================================= -->
+  <section id="documents" class="view">
+    <h2>📜 Registros Históricos & Fontes Primárias</h2>
+    <p>Acervo de certidões paroquiais originais, registros civis, passaportes e referências de imprensa histórica:</p>
+
+    <div class="documents-list" id="documents-list"></div>
+  </section>
+
+  <!-- =========================================================================
+       TAB 5: LINHA DO TEMPO
+       ========================================================================= -->
+  <section id="timeline" class="view">
+    <h2>⏳ Linha do Tempo Cronológica</h2>
+
+    <div class="timeline-controls">
+      <button class="filter-btn active" data-tlfilter="all">Todos os Eventos</button>
+      <button class="filter-btn" data-tlfilter="birth">👶 Nascimentos</button>
+      <button class="filter-btn" data-tlfilter="marriage">💍 Casamentos</button>
+      <button class="filter-btn" data-tlfilter="death">✝ Falecimentos</button>
+      <button class="filter-btn" data-tlfilter="milestone">★ Marcos Históricos</button>
+    </div>
+
+    <div class="timeline-jump" id="timeline-jump"></div>
+    <div id="timeline-decades"></div>
+  </section>
+
+</main>
+
+<!-- Modal de Detalhes da Pessoa -->
+<div class="modal-backdrop" id="modal-backdrop" onclick="closeModal()">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <h3 id="modal-title" style="margin-top: 0; color: var(--accent);"></h3>
+    <div id="modal-body"></div>
+  </div>
+</div>
 
 <!-- Lightbox de Imagem -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
@@ -2665,25 +2774,25 @@ const FAMILIES_DATABASE = {
   "lineageText": "Filhos de ➔ Rimeni Guarda ➔ Paulo Ricardo ➔ Raul Paulo ➔ Antão Farias ➔ João Alves ➔ Rei D. ➔ Rei D. ➔ Rei D. ➔ Rei D.",
   "hero": {
     "title": "A Quádrupla Continuidade Régia: Do 1º Rei de Portugal a Rimeni e Seus Filhos",
-    "text": "<p>A árvore genealógica de <strong>Rimeni Guarda Farias Cadore</strong> e seus filhos encerra um dos mais extraordinários patrimônios genealógicos da história luso-brasileira: uma <strong>quádrupla ascendência régia</strong> perfeitamente comprovada documentalmente, que remonta diretamente ao fundador de Portugal, <strong>D. Afonso I Henriques (1109–1185)</strong>, e a <strong>D. Afonso III (1210–1279)</strong>.</p><p>O sangue real entrou na família por <strong>quatro caminhos distintos e independentes</strong>:<br>1. <strong>Linha Paterna A (Alves de Faria & Açores):</strong> pelo avô paterno Raul Paulo Farias e Laurentino Alves de Farias, via Rui Gomes da Silva e Sousa Chichorro até D. Afonso Henriques.<br>2. <strong>Linha Paterna B (Pinheiro, Mendonça & Afonso Dinis):</strong> pela avó paterna Alcinda Ferreira da Silva, via Modesto Gonçalves Pinheiro, Furtado de Mendonça e Afonso Dinis até D. Afonso Henriques.<br>3. <strong>Linha Materna A (Ávila & Alvarenga):</strong> pela bisavó Leontina via Maria da Gloria Machado, Capitão Antônio Rodrigues de Alvarenga e Afonso Dinis até D. Afonso Henriques.<br>4. <strong>Linha Materna B (Fundador do Rio de Janeiro / Mariz):</strong> pela bisavó Leontina via Francisco Rodrigues da Silva, Antônio de Mariz (1565), Branca de Mello e Sousa Chichorro até D. Afonso III.</p>",
+    "text": "<p>A árvore genealógica de <strong>Rimeni Guarda Farias Cadore</strong> e seus filhos encerra um dos mais extraordinários patrimônios genealógicos da história luso-brasileira: uma <strong>quádrupla ascendência régia</strong> comprovada documentalmente, que remonta diretamente ao fundador de Portugal, <strong>D. Afonso I Henriques (1109–1185)</strong>, e a <strong>D. Afonso III (1210–1279)</strong>.</p><p>O sangue real entrou na família por <strong>quatro caminhos distintos e independentes</strong>:<br>1. <strong>Linha Paterna A (Alves de Faria & Açores):</strong> pelo avô paterno Raul Paulo Farias e Laurentino Alves de Farias, via Rui Gomes da Silva e Sousa Chichorro até D. Afonso Henriques.<br>2. <strong>Linha Paterna B (Pinheiro, Mendonça & Afonso Dinis):</strong> pela avó paterna Alcinda Ferreira da Silva, via Modesto Gonçalves Pinheiro, Furtado de Mendonça e Afonso Dinis até D. Afonso Henriques.<br>3. <strong>Linha Materna A (Ávila & Alvarenga):</strong> pela bisavó Leontina via Maria da Gloria Machado, Capitão Antônio Rodrigues de Alvarenga e Afonso Dinis até D. Afonso Henriques.<br>4. <strong>Linha Materna B (Fundador do Rio de Janeiro / Mariz):</strong> pela bisavó Leontina via Francisco Rodrigues da Silva, Antônio de Mariz (1565), Branca de Mello e Sousa Chichorro até D. Afonso III.</p>",
     "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Afonso_Henriques_-_Almeida_J%C3%BAnior.jpg/800px-Afonso_Henriques_-_Almeida_J%C3%BAnior.jpg",
     "caption": "D. Afonso I Henriques (1109–1185), primeiro Rei e fundador de Portugal, retratado em tela clássica de Almeida Júnior."
   },
   "stats": [
     {
-      "value": "26",
+      "number": "26",
       "label": "Gerações Diretas"
     },
     {
-      "value": "280",
+      "number": "280",
       "label": "Fontes Catalogadas"
     },
     {
-      "value": "1109",
+      "number": "1109",
       "label": "Raiz Histórica (Ano)"
     },
     {
-      "value": "100%",
+      "number": "100%",
       "label": "Vínculo Primário"
     }
   ],
@@ -2703,19 +2812,19 @@ const FAMILIES_DATABASE = {
       "lineageText": "Filhos de ➔ Rimeni Guarda ➔ Paulo Ricardo ➔ Raul Paulo ➔ Antão Farias ➔ João Alves ➔ Rei D. ➔ Rei D. ➔ Rei D. ➔ Rei D.",
       "stats": [
         {
-          "value": "26",
+          "number": "26",
           "label": "Gerações Diretas"
         },
         {
-          "value": "280",
+          "number": "280",
           "label": "Fontes Catalogadas"
         },
         {
-          "value": "1109",
+          "number": "1109",
           "label": "Raiz Histórica (Ano)"
         },
         {
-          "value": "100%",
+          "number": "100%",
           "label": "Vínculo Primário"
         }
       ],
@@ -4374,20 +4483,6 @@ const FAMILIES_DATABASE = {
           "location": "Guimarães, Portugal 🇵🇹"
         },
         {
-          "year": 1154,
-          "date": "1154",
-          "type": "birth",
-          "description": "Nascimento de <strong>D. Sancho I</strong>, 2º Rei de Portugal.",
-          "location": "Coimbra, Portugal 🇵🇹"
-        },
-        {
-          "year": 1185,
-          "date": "1185",
-          "type": "birth",
-          "description": "Nascimento de <strong>D. Afonso II</strong>, 3º Rei de Portugal.",
-          "location": "Coimbra, Portugal 🇵🇹"
-        },
-        {
           "year": 1210,
           "date": "1210",
           "type": "birth",
@@ -4402,38 +4497,31 @@ const FAMILIES_DATABASE = {
           "location": "Portugal 🇵🇹"
         },
         {
-          "year": 1320,
-          "date": "1320",
-          "type": "birth",
-          "description": "Nascimento de <strong>Vasco Martins de Sousa Chichorro</strong>, 1º Senhor de Mortágua.",
-          "location": "Mortágua, Portugal 🇵🇹"
-        },
-        {
           "year": 1400,
           "date": "1400",
           "type": "birth",
           "description": "Nascimento de <strong>Rui Gomes da Silva</strong>, Alcaide-Mor de Campo Maior.",
-          "location": "Campo Maior, Alentejo, Portugal 🇵🇹"
+          "location": "Campo Maior, Portugal 🇵🇹"
         },
         {
           "year": 1615,
           "date": "1615",
           "type": "birth",
-          "description": "Nascimento de <strong>Catarina Coelho</strong> nas Ilhas dos Açores.",
+          "description": "Nascimento de <strong>Catarina Coelho</strong> na Ilha do Faial.",
           "location": "Ilha do Faial, Açores 🇵🇹"
         },
         {
           "year": 1762,
           "date": "1762",
           "type": "birth",
-          "description": "Nascimento de <strong>Joaquina Rosa Alves de Faria</strong>, pioneira em Santo Antônio da Patrulha.",
+          "description": "Nascimento de <strong>Joaquina Rosa Alves de Faria</strong> em Santo Antônio da Patrulha.",
           "location": "Santo Antônio da Patrulha/RS 🇧🇷"
         },
         {
           "year": 1838,
           "date": "1838",
           "type": "birth",
-          "description": "Nascimento de <strong>Laurentino Alves de Farias</strong> no Rio Grande do Sul.",
+          "description": "Nascimento de <strong>Laurentino Alves de Farias</strong>.",
           "location": "Rio Grande do Sul 🇧🇷"
         },
         {
@@ -4467,19 +4555,19 @@ const FAMILIES_DATABASE = {
       "lineageText": "Diego Cadore ➔ Rimeni Guarda ➔ Paulo Ricardo ➔ Alcinda Ferreira ➔ Maria Clara ➔ Modesto Gonçalves ➔ Rei D. ➔ Rei D. ➔ Rei D. ➔ Rei D.",
       "stats": [
         {
-          "value": "26",
+          "number": "26",
           "label": "Gerações Diretas"
         },
         {
-          "value": "352",
+          "number": "352",
           "label": "Fontes Catalogadas"
         },
         {
-          "value": "1109",
+          "number": "1109",
           "label": "Raiz Histórica (Ano)"
         },
         {
-          "value": "100%",
+          "number": "100%",
           "label": "Vínculo Primário"
         }
       ],
@@ -6148,7 +6236,7 @@ const FAMILIES_DATABASE = {
           "year": 1260,
           "date": "1260",
           "type": "birth",
-          "description": "Nascimento de <strong>Afonso Dinis</strong>, filho legitimado de D. Afonso III.",
+          "description": "Nascimento de <strong>Afonso Dinis</strong>, filho de D. Afonso III.",
           "location": "Santarém, Portugal 🇵🇹"
         },
         {
@@ -6157,13 +6245,6 @@ const FAMILIES_DATABASE = {
           "type": "birth",
           "description": "Nascimento de <strong>Diogo Afonso de Sousa</strong>, Senhor de Mafra.",
           "location": "Portugal 🇵🇹"
-        },
-        {
-          "year": 1330,
-          "date": "1330",
-          "type": "birth",
-          "description": "Nascimento de <strong>Álvaro Dias de Sousa</strong>, Senhor de Mafra e Ericeira.",
-          "location": "Mafra, Portugal 🇵🇹"
         },
         {
           "year": 1358,
@@ -6180,24 +6261,17 @@ const FAMILIES_DATABASE = {
           "location": "Porto Santo, Madeira 🇵🇹"
         },
         {
-          "year": 1535,
-          "date": "1535",
-          "type": "birth",
-          "description": "Fixação da família <strong>Furtado de Mendonça</strong> na Ilha Graciosa.",
-          "location": "Ilha Graciosa, Açores 🇵🇹"
-        },
-        {
           "year": 1734,
           "date": "1734",
           "type": "birth",
-          "description": "Nascimento de <strong>Maria da Luz</strong> na Graciosa e imigração para o Sul.",
-          "location": "Ilha Graciosa ➔ Viamão/RS 🇧🇷"
+          "description": "Nascimento de <strong>Maria da Luz</strong> na Ilha Graciosa.",
+          "location": "Ilha Graciosa, Açores 🇵🇹"
         },
         {
           "year": 1812,
           "date": "1812",
           "type": "birth",
-          "description": "Nascimento de <strong>Luiz Gonçalves Pinheiro</strong> em Rio Pardo.",
+          "description": "Nascimento de <strong>Luiz Gonçalves Pinheiro</strong> em Rio Pardo/RS.",
           "location": "Rio Pardo, RS 🇧🇷"
         },
         {
@@ -6238,19 +6312,19 @@ const FAMILIES_DATABASE = {
       "lineageText": "Filhos de ➔ Rimeni Guarda ➔ Maria de ➔ Ondina Da ➔ Leontina Severo ➔ Maria da ➔ D. Henrique",
       "stats": [
         {
-          "value": "34",
+          "number": "34",
           "label": "Gerações Diretas"
         },
         {
-          "value": "308",
+          "number": "308",
           "label": "Fontes Catalogadas"
         },
         {
-          "value": "1109",
+          "number": "1109",
           "label": "Raiz Histórica (Ano)"
         },
         {
-          "value": "100%",
+          "number": "100%",
           "label": "Vínculo Primário"
         }
       ],
@@ -8496,7 +8570,7 @@ const FAMILIES_DATABASE = {
           "year": 1860,
           "date": "1860",
           "type": "birth",
-          "description": "Nascimento de <strong>Maria da Gloria Machado</strong> no Rio Grande do Sul.",
+          "description": "Nascimento de <strong>Maria da Gloria Machado</strong> no RS.",
           "location": "Rio Grande do Sul 🇧🇷"
         },
         {
@@ -8530,19 +8604,19 @@ const FAMILIES_DATABASE = {
       "lineageText": "Filhos de ➔ Rimeni Guarda ➔ Maria de ➔ Ondina Da ➔ Leontina Severo ➔ Francisco Rodrigues ➔ Rei D. ➔ Rei D. ➔ Rei D. ➔ Rei D.",
       "stats": [
         {
-          "value": "28",
+          "number": "28",
           "label": "Gerações Diretas"
         },
         {
-          "value": "369",
+          "number": "369",
           "label": "Fontes Catalogadas"
         },
         {
-          "value": "1109",
+          "number": "1109",
           "label": "Raiz Histórica (Ano)"
         },
         {
-          "value": "100%",
+          "number": "100%",
           "label": "Vínculo Primário"
         }
       ],
@@ -12028,20 +12102,6 @@ const FAMILIES_DATABASE = {
       "location": "Guimarães, Portugal 🇵🇹"
     },
     {
-      "year": 1154,
-      "date": "1154",
-      "type": "birth",
-      "description": "Nascimento de <strong>D. Sancho I</strong>, 2º Rei de Portugal.",
-      "location": "Coimbra, Portugal 🇵🇹"
-    },
-    {
-      "year": 1185,
-      "date": "1185",
-      "type": "birth",
-      "description": "Nascimento de <strong>D. Afonso II</strong>, 3º Rei de Portugal.",
-      "location": "Coimbra, Portugal 🇵🇹"
-    },
-    {
       "year": 1210,
       "date": "1210",
       "type": "birth",
@@ -12056,38 +12116,31 @@ const FAMILIES_DATABASE = {
       "location": "Portugal 🇵🇹"
     },
     {
-      "year": 1320,
-      "date": "1320",
-      "type": "birth",
-      "description": "Nascimento de <strong>Vasco Martins de Sousa Chichorro</strong>, 1º Senhor de Mortágua.",
-      "location": "Mortágua, Portugal 🇵🇹"
-    },
-    {
       "year": 1400,
       "date": "1400",
       "type": "birth",
       "description": "Nascimento de <strong>Rui Gomes da Silva</strong>, Alcaide-Mor de Campo Maior.",
-      "location": "Campo Maior, Alentejo, Portugal 🇵🇹"
+      "location": "Campo Maior, Portugal 🇵🇹"
     },
     {
       "year": 1615,
       "date": "1615",
       "type": "birth",
-      "description": "Nascimento de <strong>Catarina Coelho</strong> nas Ilhas dos Açores.",
+      "description": "Nascimento de <strong>Catarina Coelho</strong> na Ilha do Faial.",
       "location": "Ilha do Faial, Açores 🇵🇹"
     },
     {
       "year": 1762,
       "date": "1762",
       "type": "birth",
-      "description": "Nascimento de <strong>Joaquina Rosa Alves de Faria</strong>, pioneira em Santo Antônio da Patrulha.",
+      "description": "Nascimento de <strong>Joaquina Rosa Alves de Faria</strong> em Santo Antônio da Patrulha.",
       "location": "Santo Antônio da Patrulha/RS 🇧🇷"
     },
     {
       "year": 1838,
       "date": "1838",
       "type": "birth",
-      "description": "Nascimento de <strong>Laurentino Alves de Farias</strong> no Rio Grande do Sul.",
+      "description": "Nascimento de <strong>Laurentino Alves de Farias</strong>.",
       "location": "Rio Grande do Sul 🇧🇷"
     },
     {
@@ -12160,44 +12213,74 @@ const FAMILIES_DATABASE = {
     }
   ],
   "trajectory": {
-    "summary": "Quatro trajetórias seculares que convergem no Rio Grande do Sul: a rota açoriana do Faial (Santo Antônio da Patrulha), a rota açoriana da Graciosa (Rio Pardo / São Pedro do Sul), a rota dos bandeirantes de São Paulo, e a rota carioca dos fundadores da Guanabara, todas com berço na monarquia de Portugal.",
-    "mapImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Portugal_Imp%C3%A9rio_total.png/640px-Portugal_Imp%C3%A9rio_total.png",
-    "mapCaption": "As quatro rotas de convergência: Portugal Medieval ➔ Açores (Faial e Graciosa) / São Paulo / Rio de Janeiro ➔ Rio Grande do Sul.",
+    "routeSteps": [
+      "Portugal Medieval (Guimarães / Coimbra)",
+      "Açores (Faial e Graciosa) & São Paulo",
+      "Rio Pardo, Viamão & Santo Antônio da Patrulha",
+      "Região Central Gaúcha",
+      "Rimeni & Filhos"
+    ],
+    "period": "1109 — Presente (Mais de 900 anos de história documentada)",
+    "vector": "Dinastia Real Portuguesa ➔ Fidalguia & Colonização Açoriana / Paulistana ➔ RS",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Portugal_Imp%C3%A9rio_total.png/640px-Portugal_Imp%C3%A9rio_total.png",
+    "caption": "As quatro rotas de convergência: Portugal Medieval ➔ Açores (Faial e Graciosa) / São Paulo / Rio de Janeiro ➔ Rio Grande do Sul.",
     "steps": [
       {
-        "num": "01",
+        "step": 1,
+        "badge": "Fundação Régia",
         "period": "1109 — 1279",
-        "title": "Fundação do Reino de Portugal",
-        "desc": "Reinado de D. Afonso Henriques e D. Afonso III. Nascimento dos ramos nobres Sousa Chichorro e Afonso Dinis.",
-        "badge": "Dinastia Real"
+        "title": "Reinado dos Primeiros Reis de Portugal",
+        "location": "Guimarães, Coimbra e Lisboa 🇵🇹",
+        "points": [
+          "D. Afonso I Henriques (1109–1185) funda a nacionalidade portuguesa.",
+          "D. Afonso III (1210–1279) consolida as fronteiras com a conquista do Algarve.",
+          "Nascimento dos ramos nobres de Martim Afonso Chichorro e Afonso Dinis."
+        ]
       },
       {
-        "num": "02",
+        "step": 2,
+        "badge": "Casas Fidalgas",
         "period": "1350 — 1565",
-        "title": "A Fidalguia e os Mestres das Ordens",
-        "desc": "Lopo Dias de Sousa (Mestre de Cristo), Rui Gomes da Silva em Campo Maior, Antônio Rodrigues de Alvarenga em Lamego e Antônio de Mariz no Rio de Janeiro.",
-        "badge": "Casas Fidalgas"
+        "title": "A Fidalguia Medieval e os Mestres das Ordens",
+        "location": "Mafra, Ericeira, Campo Maior e Barcelos 🇵🇹",
+        "points": [
+          "Lopo Dias de Sousa como Mestre da Ordem de Cristo.",
+          "Rui Gomes da Silva como Alcaide-Mor de Campo Maior.",
+          "Antônio Rodrigues de Alvarenga em Lamego e Antônio de Mariz na fundação do Rio de Janeiro em 1565."
+        ]
       },
       {
-        "num": "03",
+        "step": 3,
+        "badge": "Expansão Insular e Colonial",
         "period": "1550 — 1750",
-        "title": "O Povoamento dos Açores, Curitiba e São Paulo",
-        "desc": "Fixação das famílias nos Açores (Faial e Graciosa) e expansão das linhas paulistas e paranaenses em direção ao Sul.",
-        "badge": "Expansão Colonial"
+        "title": "Povoamento dos Açores, Curitiba e São Paulo",
+        "location": "Ilhas do Faial e Graciosa (Açores) & Capitanias do Sul 🇵🇹🇧🇷",
+        "points": [
+          "Fixação dos ramos Alves de Faria no Faial e Furtado de Mendonça na Graciosa.",
+          "Povoamento bandeirante em São Paulo e tropeiro no Paraná (Lara)."
+        ]
       },
       {
-        "num": "04",
+        "step": 4,
+        "badge": "Raízes Sulinas",
         "period": "1750 — 1850",
-        "title": "A Chegada ao Rio Grande do Sul",
-        "desc": "Os Alves de Faria em Santo Antônio da Patrulha, os Pinheiro em Rio Pardo e São Pedro do Sul, e as famílias D Ávila e Silva em Santiago e região central gaúcha.",
-        "badge": "Raízes Sulinas"
+        "title": "Chegada e Fixação no Rio Grande do Sul",
+        "location": "Santo Antônio da Patrulha, Rio Pardo, Viamão e São Pedro do Sul 🇧🇷",
+        "points": [
+          "Pioneiros açorianos estabelecem raízes em Santo Antônio da Patrulha e Rio Pardo.",
+          "Família Pinheiro e Silva estabelecem estâncias na região central gaúcha."
+        ]
       },
       {
-        "num": "05",
+        "step": 5,
+        "badge": "Atualidade",
         "period": "1900 — 2026",
-        "title": "A Quádrupla Convergência em Rimeni",
-        "desc": "União das quatro linhagens reais em Rimeni Guarda Farias Cadore e transmissão integral aos seus filhos com Diego Cadore.",
-        "badge": "Atualidade"
+        "title": "A Quádrupla Convergência em Rimeni e Filhos",
+        "location": "Rio Grande do Sul 🇧🇷",
+        "points": [
+          "Convergência das quatro vertentes reais em Rimeni Guarda Farias Cadore.",
+          "Transmissão do patrimônio histórico aos filhos com Diego Cadore."
+        ]
       }
     ]
   }
@@ -12697,6 +12780,52 @@ const FAMILIES_DATABASE = {
 // =============================================================================
 
 let currentFamilyKey = 'schubert';
+
+
+// =============================================================================
+// CONTROLE DAS 4 LINHAGENS REAIS DE RIMENI
+// =============================================================================
+let currentRoyalSublineKey = 'paterna_a';
+
+function switchRoyalSubline(sublineKey) {
+  const fam = FAMILIES_DATABASE['realeza'];
+  if (!fam || !fam.sublines || !fam.sublines[sublineKey]) return;
+  
+  currentRoyalSublineKey = sublineKey;
+  const sub = fam.sublines[sublineKey];
+  
+  // Atualiza botões
+  document.querySelectorAll('.subline-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.subline === sublineKey);
+  });
+  
+  // Atualiza dados na família ativa
+  fam.treePedigree = sub.treePedigree;
+  fam.treeRows = sub.treeRows;
+  fam.connections = sub.connections;
+  fam.people = sub.people;
+  fam.documents = sub.documents;
+  fam.timeline = sub.timeline;
+  fam.stats = sub.stats;
+  fam.lineageText = sub.lineageText;
+  fam.subtitle = sub.subtitle;
+  
+  // Re-renderiza views
+  const subEl = document.getElementById('header-subtitle');
+  if (subEl) subEl.textContent = sub.subtitle;
+  const linEl = document.getElementById('header-lineage');
+  if (linEl) linEl.textContent = sub.lineageText;
+  
+  renderHomeTab(fam);
+  renderTreeTab(fam);
+  renderPeopleTab(fam);
+  renderDocumentsTab(fam);
+  renderTimelineTab(fam);
+  
+  if (document.getElementById('tree') && document.getElementById('tree').classList.contains('active')) {
+    setTimeout(() => drawTreeLines(fam), 100);
+  }
+}
 
 function selectFamily(key) {
   if (!FAMILIES_DATABASE[key]) key = 'schubert';
