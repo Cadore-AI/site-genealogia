@@ -1414,26 +1414,32 @@ const FAMILIES_DATABASE = {
     originCode: "IT",
     originLabel: "🇮🇹 Ramo Paterno Italiano — Vêneto / Vicenza / Marostica",
     subtitle: "História, Documentos e Genealogia da Linhagem Patrilinear de Edison Luis Cadore",
-    lineageText: "Giovanni Battista Cadore (1809) ➔ Giovanni Battista Cadore (1853) ➔ Luigi Cadore (1887) ➔ Luiz Domingos Cadore (1935) ➔ Edison Luis Cadore (1958) ➔ Diego Cadore",
+    lineageText: "Antonio Cadore († <1815) ➔ Giovanni Battista (1764) ➔ Antonio (1790) ➔ Giovanni Battista (1809) ➔ Giovanni Battista (1853) ➔ Luigi (1887) ➔ Luiz Domingos (1935) ➔ Edison Luis (1958) ➔ Diego Cadore",
     hero: {
-      title: "De Marostica e Mason Vicentino à Serra e Planalto Gaúcho",
-      text: `<p>A família <strong>Cadore</strong> possui uma história secular profundamente enraizada na região do Vêneto, norte da Itália. Embora o sobrenome remonte geograficamente à histórica região montanhosa de Cadore, a linhagem direta documentada desenvolveu-se na província de <strong>Vicenza</strong>, nas comunas de <strong>Mason Vicentino, Nove e Marostica</strong>.</p>
-             <p>O patriarca mais antigo identificado é <strong>Giovanni Battista Cadore (1809–1897)</strong>, nascido em Mason Vicentino, casado com <strong>Antonia Bonato (1818–1893)</strong>, de Nove. Seu filho, <strong>Giovanni Battista Cadore (nascido em 24 de junho de 1853 em Marostica)</strong>, casou-se com <strong>Anna Maria Schirato (nascida em 20 de setembro de 1860 em Marostica)</strong>.</p>
+      title: "De Marostica, Nove e Mason Vicentino à Serra e Planalto Gaúcho",
+      text: `<p>A família <strong>Cadore</strong> possui uma história secular profundamente enraizada na província de <strong>Vicenza</strong> (região do Vêneto, norte da Itália), com registros documentais que remontam formalmente ao <strong>século XVI (1597)</strong> nos fundos notariais do <em>Archivio di Stato di Vicenza</em>.</p>
+             <p>Na linha patrilinear direta da família, a documentação paroquial e civil recua até o patriarca <strong>Antonio Cadore († <1815)</strong> e seu filho <strong>Giovanni Battista Cadore (* 1764 — † 1836)</strong>, casado com <strong>Elisabetta Pigato (* 1767 — † 1851)</strong> na comuna de Nove. O bisneto deste, <strong>Giovanni Battista Cadore (nascido em 24 de junho de 1853 em Marostica)</strong>, casou-se com <strong>Anna Maria Schirato (nascida em 20 de setembro de 1860 em Marostica)</strong>.</p>
              <p>Na década de 1880, o casal empreendeu a grande travessia migratória até o Rio Grande do Sul. Em 15 de fevereiro de 1887, em Garibaldi/RS, nasceu seu filho <strong>Luigi Cadore (1887–1966)</strong>, que posteriormente desbravou o noroeste gaúcho fixando-se em Ijuí, onde casou-se com <strong>Emilia Dequigiovanni</strong>. Desse matrimônio nasceu <strong>Luiz Domingos Cadore (1935–2010)</strong>, pai de <strong>Edison Luis Cadore (1958–2026)</strong>.</p>`,
       image: "images/casamento_luigi_cadore_emilia_dequigiovanni_1907.jpg",
       caption: "Registro de Casamento Civil de Luigi Cadore e Emilia Dequigiovanni (1907, Encantado/RS)."
     },
     stats: [
-      { number: "6", label: "Gerações Mapeadas" },
-      { number: "1809", label: "Registro Mais Antigo (Mason Vicentino)" },
+      { number: "8", label: "Gerações Mapeadas (Patrilinear)" },
+      { number: "1597", label: "Registro Notarial Mais Antigo (AS Vicenza)" },
+      { number: "1764", label: "Patriarca Direto Documentado (Nove)" },
       { number: "1887", label: "1ª Geração no RS (Luigi)" },
       { number: "Marostica", label: "Comuna de Origem (Vicenza)" }
     ],
     stories: [
       {
-        title: "🇮🇹 As Raízes em Vicenza: Mason, Nove e Marostica",
-        text: "<p>A documentação de registro civil e paroquial italiana comprova que os patriarcas Giovanni Battista Cadore e Antonia Bonato viveram e faleceram na comuna de Nove/Vicenza. Seu filho Giovanni Battista e sua nora Anna Maria Schirato eram naturais da célebre comuna medieval de Marostica, aos pés dos montes pré-alpinos.</p>",
+        title: "📜 Presença Histórica em Vicenza: Documentada desde 1597",
+        text: "<p>Auditorias recentes no <strong>Archivio di Stato di Vicenza</strong> revelaram a profunda antiguidade da família na região: o registro documental mais antigo localizado é o testamento de <strong>Pasquale Cadore</strong>, filho do falecido <strong>Francesco Cadore</strong>, lavrado em <strong>1597</strong> perante o notário Marco Antonio Caltran, sucedido pelo testamento de <strong>Marchioro Cadore</strong> em <strong>1624</strong> (notário Vincenzo Mazzolla). Isso comprova mais de quatro séculos de presença contínua do sobrenome Cadore nas terras vicentinas.</p>",
         featured: true
+      },
+      {
+        title: "🇮🇹 As Raízes Diretas: Nove, Mason e Marostica",
+        text: "<p>A documentação de registro civil e paroquial comprova a sucessão ininterrupta no eixo Nove-Marostica: desde Antonio Cadore († <1815) e Giovanni Battista Cadore (* 1764 × Elisabetta Pigato), passando por Antonio (* 1790 × Angela Maria Baggio) e Giovanni Battista (* 1809 × Antonia Bonato). Seu filho Giovanni Battista e a nora Anna Maria Schirato eram naturais de Marostica, no sopé pré-alpino.</p>",
+        featured: false
       },
       {
         title: "🇧🇷 O Assentamento em Garibaldi, Encantado e Ijuí/RS",
@@ -1449,7 +1455,7 @@ const FAMILIES_DATABASE = {
     ],
     trajectory: {
       routeSteps: ["Mason / Nove / Marostica (Vicenza) 🇮🇹", "Porto de Gênova 🚢", "Rio Grande / Porto Alegre 🇧🇷", "Garibaldi (1887)", "Encantado (1900s)", "Ijuí (1930s+)"],
-      period: "1809 — Presente (Mais de 140 anos de trajetória no Brasil)",
+      period: "1597 / 1764 — Presente (Mais de 4 séculos de história familiar)",
       vector: "Transatlântico / Colonização Italiana no RS",
       image: "images/trajetoria_cadore_esquema.png",
       caption: "Mapeamento espacial da migração dos Cadore: do sopé pré-alpino vicentino à Serra e ao Noroeste Gaúcho.",
@@ -1851,6 +1857,10 @@ const FAMILIES_DATABASE = {
       }
     ],
     timeline: [
+      { year: 1597, date: "1597", type: "milestone", description: "Testamento notarial de <strong>Pasquale Cadore</strong>, filho do falecido Francesco Cadore, perante o notário Marco Antonio Caltran em Vicenza (Archivio di Stato di Vicenza).", location: "Vicenza, Itália 🇮🇹" },
+      { year: 1624, date: "1624", type: "milestone", description: "Testamento notarial de <strong>Marchioro Cadore</strong>, filho do falecido Alessandro Cadore, perante o notário Vincenzo Mazzolla em Vicenza (Archivio di Stato di Vicenza).", location: "Vicenza, Itália 🇮🇹" },
+      { year: 1764, date: "1764", type: "birth", description: "Nascimento de <strong>Giovanni Battista Cadore</strong> em Nove/Villaraspa, filho do patriarca Antonio Cadore († <1815) e casado com Elisabetta Pigato (* 1767).", location: "Nove, Vicenza, Itália 🇮🇹" },
+      { year: 1790, date: "1790", type: "birth", description: "Nascimento de <strong>Antonio Cadore</strong> em Villaraspa, filho de Giovanni Battista e Elisabetta Pigato, casado com Angela Maria Baggio.", location: "Villaraspa / Nove, Vicenza, Itália 🇮🇹" },
       { year: 1809, date: "1809", type: "birth", description: "Nascimento de <strong>Giovanni Battista Cadore (Sênior)</strong> em Mason Vicentino, Vicenza.", location: "Mason Vicentino, Vicenza, Itália 🇮🇹" },
       { year: 1818, date: "1818", type: "birth", description: "Nascimento de <strong>Antonia Bonato</strong> em Nove, Vicenza.", location: "Nove, Vicenza, Itália 🇮🇹" },
       { year: 1853, date: "24/06/1853", type: "birth", description: "Nascimento de <strong>Giovanni Battista Cadore</strong> em Marostica, Vicenza.", location: "Marostica, Vicenza, Itália 🇮🇹" },
