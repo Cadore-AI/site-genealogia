@@ -1417,7 +1417,7 @@ const FAMILIES_DATABASE = {
     lineageText: "Antonio Cadore († <1815) ➔ Giovanni Battista (1764) ➔ Antonio (1790) ➔ Giovanni Battista (1809) ➔ Giovanni Battista (1853) ➔ Luigi (1887) ➔ Luiz Domingos (1935) ➔ Edison Luis (1958) ➔ Diego Cadore",
     hero: {
       title: "De Marostica, Nove e Mason Vicentino à Serra e Planalto Gaúcho",
-      text: `<p>A família <strong>Cadore</strong> possui uma história secular profundamente enraizada na província de <strong>Vicenza</strong> (região do Vêneto, norte da Itália), com registros documentais que remontam formalmente ao <strong>século XVI (1597)</strong> nos fundos notariais do <em>Archivio di Stato di Vicenza</em>.</p>
+      text: `<p>A família <strong>Cadore</strong> possui uma história secular profundamente documentada no norte da Itália, com registros que remontam ao início do <strong>século XVI (1538)</strong> com o notário <strong>Antonio Cadore</strong> em Feltre (protocolos 1537–1578 no <em>Archivio di Stato di Belluno</em>, sucedido pelo notário <strong>Giovanni Battista Cadore</strong> em 1575), e desde <strong>1597</strong> na província de <strong>Vicenza</strong> (testamento de <em>Pasquale Cadore q. Francesco</em> no <em>Archivio di Stato di Vicenza</em>).</p>
              <p>Na linha patrilinear direta da família, a documentação paroquial e civil recua até o patriarca <strong>Antonio Cadore († <1815)</strong> e seu filho <strong>Giovanni Battista Cadore (* 1764 — † 1836)</strong>, casado com <strong>Elisabetta Pigato (* 1767 — † 1851)</strong> na comuna de Nove. O bisneto deste, <strong>Giovanni Battista Cadore (nascido em 24 de junho de 1853 em Marostica)</strong>, casou-se com <strong>Anna Maria Schirato (nascida em 20 de setembro de 1860 em Marostica)</strong>.</p>
              <p>Na década de 1880, o casal empreendeu a grande travessia migratória até o Rio Grande do Sul. Em 15 de fevereiro de 1887, em Garibaldi/RS, nasceu seu filho <strong>Luigi Cadore (1887–1966)</strong>, que posteriormente desbravou o noroeste gaúcho fixando-se em Ijuí, onde casou-se com <strong>Emilia Dequigiovanni</strong>. Desse matrimônio nasceu <strong>Luiz Domingos Cadore (1935–2010)</strong>, pai de <strong>Edison Luis Cadore (1958–2026)</strong>.</p>`,
       image: "images/casamento_luigi_cadore_emilia_dequigiovanni_1907.jpg",
@@ -1425,16 +1425,21 @@ const FAMILIES_DATABASE = {
     },
     stats: [
       { number: "8", label: "Gerações Mapeadas (Patrilinear)" },
-      { number: "1597", label: "Registro Notarial Mais Antigo (AS Vicenza)" },
+      { number: "1538", label: "Registro Notarial Mais Antigo (Feltre, AS Belluno)" },
+      { number: "1597", label: "Presença em Vicenza (Pasquale Cadore, ASVi)" },
       { number: "1764", label: "Patriarca Direto Documentado (Nove)" },
-      { number: "1887", label: "1ª Geração no RS (Luigi)" },
-      { number: "Marostica", label: "Comuna de Origem (Vicenza)" }
+      { number: "1887", label: "1ª Geração no RS (Luigi)" }
     ],
     stories: [
       {
-        title: "📜 Presença Histórica em Vicenza: Documentada desde 1597",
-        text: "<p>Auditorias recentes no <strong>Archivio di Stato di Vicenza</strong> revelaram a profunda antiguidade da família na região: o registro documental mais antigo localizado é o testamento de <strong>Pasquale Cadore</strong>, filho do falecido <strong>Francesco Cadore</strong>, lavrado em <strong>1597</strong> perante o notário Marco Antonio Caltran, sucedido pelo testamento de <strong>Marchioro Cadore</strong> em <strong>1624</strong> (notário Vincenzo Mazzolla). Isso comprova mais de quatro séculos de presença contínua do sobrenome Cadore nas terras vicentinas.</p>",
+        title: "📜 Os Notários Cadore de Feltre no Século XVI (1538–1578)",
+        text: "<p>A mais antiga evidência documental do sobrenome Cadore preservada em arquivos públicos encontra-se no <strong>Archivio di Stato di Belluno</strong>: trata-se do notário <strong>Antonio Cadore</strong>, ativo em Feltre pelo menos entre <strong>1538 e 1574+</strong>, com escritório no prestigioso Palazzo de Mezzan. Antonio produziu múltiplos protocolos notariais (1293 a 1310), foi testemunha ocular da grande inundação de Feltre de 1564 e registrou em 1570 pagamentos ao cirurgião Zanvittore Capra pelo atendimento ao seu sobrinho <strong>Iacomo (Giacomo) Cadore</strong>. Imediatamente após Antonio, surge em 1575 no mesmo fundo o notário <strong>Giovanni Battista Cadore</strong> (protocolo 1312.2), ilustrando a tradição jurídica familiar e a permanência do prenome que ecoará séculos mais tarde na linha de Nove.</p>",
         featured: true
+      },
+      {
+        title: "🏛️ A Presença Histórica em Vicenza: Documentada desde 1597",
+        text: "<p>No <strong>Archivio di Stato di Vicenza</strong>, a presença da família remonta formalmente ao testamento de <strong>Pasquale Cadore</strong>, filho do falecido <strong>Francesco Cadore</strong>, lavrado em <strong>1597</strong> perante o notário Marco Antonio Caltran, sucedido pelo testamento de <strong>Marchioro Cadore</strong> em <strong>1624</strong> (notário Vincenzo Mazzolla). Isso comprova mais de quatro séculos de presença contínua do sobrenome Cadore nas terras vicentinas.</p>",
+        featured: false
       },
       {
         title: "🇮🇹 As Raízes Diretas: Nove, Mason e Marostica",
@@ -1455,7 +1460,7 @@ const FAMILIES_DATABASE = {
     ],
     trajectory: {
       routeSteps: ["Mason / Nove / Marostica (Vicenza) 🇮🇹", "Porto de Gênova 🚢", "Rio Grande / Porto Alegre 🇧🇷", "Garibaldi (1887)", "Encantado (1900s)", "Ijuí (1930s+)"],
-      period: "1597 / 1764 — Presente (Mais de 4 séculos de história familiar)",
+      period: "1538 / 1764 — Presente (Quase 5 séculos de história documentada)",
       vector: "Transatlântico / Colonização Italiana no RS",
       image: "images/trajetoria_cadore_esquema.png",
       caption: "Mapeamento espacial da migração dos Cadore: do sopé pré-alpino vicentino à Serra e ao Noroeste Gaúcho.",
@@ -1857,6 +1862,10 @@ const FAMILIES_DATABASE = {
       }
     ],
     timeline: [
+      { year: 1538, date: "1538", type: "milestone", description: "Atividade documentada do notário <strong>Antonio Cadore</strong> em Feltre, com escritório no Palazzo de Mezzan e protocolos no Archivio di Stato di Belluno.", location: "Feltre, Belluno, Itália 🇮🇹" },
+      { year: 1564, date: "26/06/1564", type: "milestone", description: "O notário <strong>Antonio Cadore</strong> atua como testemunha ocular e relator da grande inundação de Feltre.", location: "Feltre, Belluno, Itália 🇮🇹" },
+      { year: 1570, date: "1570–1571", type: "milestone", description: "Registro nos protocolos de Antonio Cadore de pagamentos de cuidados ao sobrinho <strong>Iacomo (Giacomo) Cadore</strong> em Feltre.", location: "Feltre, Belluno, Itália 🇮🇹" },
+      { year: 1575, date: "30/08/1575", type: "milestone", description: "Protocolo notarial de <strong>Giovanni Battista Cadore</strong> em Feltre (Archivio di Stato di Belluno, prot. 1312.2).", location: "Feltre, Belluno, Itália 🇮🇹" },
       { year: 1597, date: "1597", type: "milestone", description: "Testamento notarial de <strong>Pasquale Cadore</strong>, filho do falecido Francesco Cadore, perante o notário Marco Antonio Caltran em Vicenza (Archivio di Stato di Vicenza).", location: "Vicenza, Itália 🇮🇹" },
       { year: 1624, date: "1624", type: "milestone", description: "Testamento notarial de <strong>Marchioro Cadore</strong>, filho do falecido Alessandro Cadore, perante o notário Vincenzo Mazzolla em Vicenza (Archivio di Stato di Vicenza).", location: "Vicenza, Itália 🇮🇹" },
       { year: 1764, date: "1764", type: "birth", description: "Nascimento de <strong>Giovanni Battista Cadore</strong> em Nove/Villaraspa, filho do patriarca Antonio Cadore († <1815) e casado com Elisabetta Pigato (* 1767).", location: "Nove, Vicenza, Itália 🇮🇹" },
