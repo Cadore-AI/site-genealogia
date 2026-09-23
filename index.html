@@ -1527,8 +1527,15 @@ const FAMILIES_DATABASE = {
       ]
     },
     treePedigree: [
+      { level: "Geração 7 — Patriarca Mais Antigo", nodes: [
+        { id: "cadore-antonio-patriarca", name: "Antonio Cadore", dates: "† < 1815", place: "Vicenza, Itália 🇮🇹", direct: true, foreign: true, flag: "🇮🇹" }
+      ]},
+      { level: "Geração 6 — Raízes em Mason e Nove", nodes: [
+        { id: "cadore-giovanni-1764", name: "Giovanni (Zuanne) Cadore", dates: "c. 1764 — † < 1839", place: "Mason / Nove, Itália 🇮🇹", direct: true, foreign: true, flag: "🇮🇹" },
+        { id: "pigato-elisabetta", name: "Elisabetta Pigato", dates: "1767 — † 1839", place: "Nove, Vicenza, Itália 🇮🇹", foreign: true, flag: "🇮🇹" }
+      ]},
       { level: "Geração 5 — Itália (Vicenza)", nodes: [
-        { id: "cadore-gb-1809", name: "Giovanni Battista Cadore", dates: "1808 — † 1897", place: "Mason Vicentino, Itália 🇮🇹", foreign: true, flag: "🇮🇹" },
+        { id: "cadore-gb-1809", name: "Giovanni Battista Cadore", dates: "1808 — † 1897", place: "Mason Vicentino, Itália 🇮🇹", direct: true, foreign: true, flag: "🇮🇹" },
         { id: "bonato-antonia", name: "Antonia Bonato", dates: "1818 — † 1893", place: "Nove, Vicenza, Itália 🇮🇹", foreign: true, flag: "🇮🇹" },
         { id: "schirato-stefano", name: "Stefano Schirato", dates: "1830 — † 1865", place: "Marostica, Vicenza, Itália 🇮🇹", foreign: true, flag: "🇮🇹" },
         { id: "marzaro-angela", name: "Angela Marzaro", dates: "1830 — † 1861", place: "Marostica, Vicenza, Itália 🇮🇹", foreign: true, flag: "🇮🇹" }
@@ -1554,6 +1561,8 @@ const FAMILIES_DATABASE = {
       ]}
     ],
     connections: [
+      { child: "cadore-giovanni-1764", parents: ["cadore-antonio-patriarca"] },
+      { child: "cadore-gb-1809", parents: ["cadore-giovanni-1764", "pigato-elisabetta"] },
       { child: "cadore-gb-1853", parents: ["cadore-gb-1809", "bonato-antonia"] },
       { child: "schirato-anna", parents: ["schirato-stefano", "marzaro-angela"] },
       { child: "cadore-luigi", parents: ["cadore-gb-1853", "schirato-anna"] },
@@ -1562,6 +1571,8 @@ const FAMILIES_DATABASE = {
       { child: "cadore-diego", parents: ["cadore-edison", "schubert-marlene-cadore"] }
     ],
     treeRows: [
+      { label: "Geração 7 — Patriarca Documentado († < 1815)", people: ["cadore-antonio-patriarca"] },
+      { label: "Geração 6 — Raízes em Mason e Nove (c. 1764 — 1839)", people: ["cadore-giovanni-1764", "pigato-elisabetta"] },
       { label: "Geração 5 — Itália (Mason Vicentino, Nove & Marostica)", people: ["cadore-gb-1809", "bonato-antonia", "schirato-stefano", "marzaro-angela"] },
       { label: "Geração 4 — Os Imigrantes Italianos (Marostica ➔ RS)", people: ["cadore-gb-1853", "schirato-anna"] },
       { label: "Geração 3 — Nascidos no Brasil (Garibaldi & Ijuí)", people: ["cadore-luigi", "dequigiovanni-emilia-tree"] },
@@ -1761,6 +1772,53 @@ const FAMILIES_DATABASE = {
           { icon: "✝", text: "Falecida em 1861 em Marostica, Vicenza, Itália" }
         ],
         notes: "Matriarca da linhagem Marzaro/Schirato em Marostica."
+      },
+      "pigato-elisabetta": {
+        name: "Elisabetta Pigato",
+        relation: "Pentavó • Esposa de Giovanni Cadore [GDB5-8L8]",
+        direct: false,
+        foreignBorn: true,
+        brazilBorn: false,
+        category: "direct",
+        flag: "🇮🇹",
+        facts: [
+          { icon: "👶", text: "Nascida em 05/11/1767 na província de Vicenza (Nove / Mason)" },
+          { icon: "💍", text: "Casada com Giovanni (Zuanne) Cadore" },
+          { icon: "👨‍👩‍👧‍👦", text: "Mãe de Giovanni Battista Cadore (* 1808) e Teodora Cadore (* 1792)" },
+          { icon: "✝", text: "Falecida em 02/10/1839 em Nove, Vicenza (aos 71 anos, viúva de Zuanne Cadore)" }
+        ],
+        notes: "Matriarca do ramo Cadore-Pigato documentada no registro civil de óbito de Nove."
+      },
+      "cadore-giovanni-1764": {
+        name: "Giovanni (Zuanne) Cadore",
+        relation: "Pentavô • Filho de Antonio Cadore [GDB5-W67]",
+        direct: true,
+        foreignBorn: true,
+        brazilBorn: false,
+        category: "direct",
+        flag: "🇮🇹",
+        facts: [
+          { icon: "👶", text: "Nascido por volta de 1764 na província de Vicenza" },
+          { icon: "💍", text: "Casado com Elisabetta Pigato (1767–1839)" },
+          { icon: "👨‍👦", text: "Pai de Giovanni Battista Cadore (* 1808) e Teodora Cadore" },
+          { icon: "✝", text: "Falecido antes de 1839 na província de Vicenza" }
+        ],
+        notes: "Elo patrilinear documental entre o patriarca Antonio Cadore e a geração de Nove/Mason."
+      },
+      "cadore-antonio-patriarca": {
+        name: "Antonio Cadore",
+        relation: "Hexavô • Patriarca mais antigo comprovado na linha direta",
+        direct: true,
+        foreignBorn: true,
+        brazilBorn: false,
+        category: "direct",
+        flag: "🇮🇹",
+        facts: [
+          { icon: "🏛️", text: "Patriarca radicado na província de Vicenza no século XVIII" },
+          { icon: "✝", text: "Falecido antes de 1815 (indicado como 'fu Antonio')" },
+          { icon: "👨‍👦", text: "Pai de Giovanni (Zuanne) Cadore" }
+        ],
+        notes: "Raiz patrilinear documental comprovada no Vêneto."
       }
     },
     documents: [
